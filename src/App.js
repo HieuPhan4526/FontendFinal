@@ -2,7 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import { createBrowserHistory } from 'history';
 import { Router, Switch } from 'react-router-dom';
-import Header from './components/Header/Header';
+
+import { HomeTemplate } from './templates/HomeTemplate';
+import Home from './pages/Home/Home';
 
 export const history = createBrowserHistory();
 
@@ -11,7 +13,7 @@ function App() {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <Header />
+          <HomeTemplate exact path="/home" Component={Home} />
         </Switch>
       </Router>
     </div>

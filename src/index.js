@@ -7,6 +7,12 @@ import { Provider } from 'react-redux';
 import { store } from './redux/configStore';
 import { BrowserRouter } from 'react-router-dom';
 import "antd/dist/antd.min.css";
+// import Swiper JS
+import Swiper from 'swiper';
+// import Swiper styles
+import 'swiper/css';
+
+const swiper = new Swiper();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
