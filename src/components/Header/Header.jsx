@@ -3,10 +3,16 @@ import { Fragment } from "react";
 
 export default function Header() {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        zIndex: "99",
+      }}
+    >
+      <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-5">
         <a className="navbar-brand" href="#">
-          Fiiverr
+          Fiiverr.
         </a>
         <button
           className="navbar-toggler"
@@ -21,41 +27,16 @@ export default function Header() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
+            <li className="nav-item">
               <a className="nav-link" href="#">
-                Home <span className="sr-only">(current)</span>
+                Become a Seller
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-                <div className="dropdown-divider" />
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
+              <a className="nav-link ">Sign In</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled">Disabled</a>
+              <button className="btn btn-outline-info">Join</button>
             </li>
           </ul>
         </div>
