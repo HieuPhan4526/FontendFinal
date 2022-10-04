@@ -11,6 +11,8 @@ import "antd/dist/antd.min.css";
 import Swiper from 'swiper';
 // import Swiper styles
 import 'swiper/css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const swiper = new Swiper();
 
