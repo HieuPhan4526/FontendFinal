@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { WorkReducer } from "./Reducer/WorkReducer";
 import { UserReducer } from "./Reducer/UserReducer";
 import { CommentReducer } from "./Reducer/CommentReducer";
-
+import thunk from "redux-thunk";
 
 
 const rootReducer = combineReducers({
@@ -11,4 +11,4 @@ const rootReducer = combineReducers({
     CommentReducer
 });
 
-export const store = createStore(rootReducer, applyMiddleware());
+export const store = createStore(rootReducer, applyMiddleware(thunk));

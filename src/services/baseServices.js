@@ -1,20 +1,17 @@
 import axios from "axios";
-import { DOMAIN } from "../../../ReactFinal/src/ultil/setting";
+import { DOMAIN } from "../utils/setting";
 import { TOKEN_CYBER } from "../utils/setting";
 
 
 export class baseServices {
     constructor() { }
-    get = (url, id) => {
+    get = (url) => {
         return axios({
             method: "GET",
             url: `${DOMAIN}${url}`,
-            header: {
+            headers: {
                 "tokenCybersoft": TOKEN_CYBER
             },
-            path: {
-                "id": id
-            }
         });
     };
 }
