@@ -1,27 +1,45 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import "../../../assets/css/styleSwiper.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { getListWorkAction } from "../../../redux/Actions/WorkAction.";
 
-export default function Carousel() {
-  const formik = useFormik({
-    initialValues: {
-      congViecTimKiem: "",
-    },
-    onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      console.log(values);
-    },
-  });
+export default function Carousel(props) {
+  let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
+  console.log(listWork);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getListWorkAction());
+  }, []);
+  const renderListWork = () => {
+    return listWork.map((work, index) => {
+      return (
+        <li
+          className="font-weight-bold"
+          style={{ lineHeight: "35px" }}
+          key={index}
+        >
+          {work.tenCongViec}
+        </li>
+      );
+    });
+  };
+  const handleForcus = () => {
+    let workBannerInput = document.getElementById("work_banner");
+    workBannerInput.classList.add("workBanner");
+  };
 
+  const handleBlur = () => {
+    let workBannerInput = document.getElementById("work_banner");
+    workBannerInput.classList.remove("workBanner");
+  };
   return (
     <Fragment>
-      <div style={{ position: "relative", height: "500px" }}>
+      <div style={{ position: "relative", height: "auto" }}>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -62,76 +80,87 @@ export default function Carousel() {
               alt=""
             />
           </SwiperSlide>
-          <div
-            className="container"
-            style={{
-              position: "absolute",
-              display: "flex",
-              textAlign: "start",
-              top: "120px",
-              left: "120px",
-              zIndex: "2",
-            }}
-          >
-            <div style={{ maxWidth: "600px" }}>
-              <h3 className="text-light" style={{ fontSize: "45px" }}>
-                Find the perfect
-                <i> freelance </i>
-                services for your business
-              </h3>
-              <form
-                onSubmit={formik.handleSubmit}
-                className="input-group mb-3 "
-              >
-                <input
-                  type="text"
-                  name="congViecTimKiem"
-                  className="form-control"
-                  placeholder="Try 'building mobile app'"
-                  aria-label="Recipient's username"
-                  aria-describedby="button-addon2"
-                  onChange={formik.handleChange}
-                  value={formik.values.congViecTimKiem}
-                />
-                <div className="input-group-append">
-                  <button
-                    className="btn btn-secondary"
-                    type="button"
-                    id="button-addon2"
-                  >
-                    Search
-                  </button>
-                </div>
-              </form>
-              <div className="d-flex mt-3">
-                <span className="text-light">Popular: </span>
-                <ul
-                  className="p-0"
-                  style={{ listStyle: "none", display: "flex" }}
+        </Swiper>
+        <div
+          className="container"
+          style={{
+            position: "absolute",
+            display: "flex",
+            textAlign: "start",
+            top: "120px",
+            left: "120px",
+            zIndex: "2",
+          }}
+        >
+          <div style={{ maxWidth: "600px", position: "relative" }}>
+            <h3 className="text-light" style={{ fontSize: "45px" }}>
+              Find the perfect
+              <i> freelance </i>
+              services for your business
+            </h3>
+            <form className="input-group mb-3 ">
+              <input
+                type="text"
+                id="congViecTimKiem"
+                name="congViecTimKiem"
+                className="form-control"
+                placeholder="Try 'building mobile app'"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+                onFocus={handleForcus}
+                onBlur={handleBlur}
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-success"
+                  type="button"
+                  id="button-addon2"
                 >
-                  <li className="mx-2">
-                    <button className="btn btn-outline-light">
-                      Website Design
-                    </button>
-                  </li>
-                  <li>
-                    <button className="btn btn-outline-light">WordPress</button>
-                  </li>
-                  <li className="mx-2">
-                    <button className="btn btn-outline-light">
-                      Logo Design
-                    </button>
-                  </li>
-                  <li>
-                    <button className="btn btn-outline-light">
-                      Video Editing
-                    </button>
-                  </li>
-                </ul>
+                  Search
+                </button>
               </div>
+            </form>
+            <ul
+              id="work_banner"
+              style={{
+                position: "absolute",
+                backgroundColor: "white",
+                listStyle: "none",
+                padding: "20px",
+                boxShadow: "20px 20px 50px 15px grey",
+                opacity: "0",
+                visibility: "hidden",
+              }}
+            >
+              {renderListWork()}
+            </ul>
+
+            <div className="d-flex mt-3">
+              <span className="text-light">Popular: </span>
+              <ul
+                className="p-0"
+                style={{ listStyle: "none", display: "flex" }}
+              >
+                <li className="mx-2">
+                  <button className="btn btn-outline-light">
+                    Website Design
+                  </button>
+                </li>
+                <li>
+                  <button className="btn btn-outline-light">WordPress</button>
+                </li>
+                <li className="mx-2">
+                  <button className="btn btn-outline-light">Logo Design</button>
+                </li>
+                <li>
+                  <button className="btn btn-outline-light">
+                    Video Editing
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
-        </Swiper>
+        </div>
       </div>
       <div style={{ backgroundColor: "#fafafa", marginBottom: "96px" }}>
         <div className="p-5">

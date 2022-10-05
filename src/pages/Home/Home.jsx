@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 
 import Carousel from "./component/Carousel";
 import MultipleSlick from "./component/MultipleSlick";
@@ -6,7 +6,7 @@ import "../../assets/css/styleHome.css";
 import SimpleSlick from "./component/SimpleSlick";
 import { Button, Modal } from "antd";
 
-export default function Home() {
+export default function Home(props) {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const showModal = () => {
     setIsModalOpen1(true);
@@ -36,13 +36,14 @@ export default function Home() {
         </div>
       </div>
       <div
+        className="a_whole_world"
         style={{
           backgroundColor: "#f1fdf7",
           marginBottom: "96px",
           padding: "96px 50px",
         }}
       >
-        <div>
+        <div className="container-fluid">
           <div className="row">
             <div className="col-md-12 col-xl-6" style={{ paddingRight: "11%" }}>
               <h2>A whole world of freelance talent at your fingertips</h2>

@@ -120,44 +120,46 @@ export default function Footer() {
         </div>
       </div>
       <hr />
-      <div className="row">
-        <div className="col-6">
-          <div className="d-flex align-items-center">
-            <h3 className="m-0">
-              fiverr
-              <span style={{ fontSize: "15px" }}> &#174;</span>
-            </h3>
-            <span className="ml-5" style={{ color: "rgba(0,0,0,0.4)" }}>
-              &#169; Fiverr International Ltd. 2021
-            </span>
-          </div>
-        </div>
-        <div className="col-6">
-          <div className="d-flex align-items-center justify-content-between">
-            <a href="#">
-              <i className="fa-brands fa-twitter"></i>
-            </a>
-            <a href="#">
-              <i className="fa-brands fa-facebook"></i>
-            </a>
-            <a href="#">
-              <i className="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="#">
-              <i className="fa-brands fa-pinterest"></i>
-            </a>
-            <a href="#">
-              <i className="fa-brands fa-instagram"></i>
-            </a>
-            <div>
-              <a href="#">
-                <i className="fa-solid fa-earth-asia"></i>
-              </a>
-              <span className="ml-1">English</span>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-6">
+            <div className="d-flex align-items-center">
+              <h3 className="m-0">
+                fiverr
+                <span style={{ fontSize: "15px" }}> &#174;</span>
+              </h3>
+              <span className="ml-5" style={{ color: "rgba(0,0,0,0.4)" }}>
+                &#169; Fiverr International Ltd. 2021
+              </span>
             </div>
+          </div>
+          <div className="col-6">
+            <div className="d-flex align-items-center justify-content-between">
+              <a href="#">
+                <i className="fa-brands fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i className="fa-brands fa-facebook"></i>
+              </a>
+              <a href="#">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+              <a href="#">
+                <i className="fa-brands fa-pinterest"></i>
+              </a>
+              <a href="#">
+                <i className="fa-brands fa-instagram"></i>
+              </a>
+              <div>
+                <a href="#">
+                  <i className="fa-solid fa-earth-asia"></i>
+                </a>
+                <span className="ml-1">English</span>
+              </div>
 
-            <span>$USD</span>
-            <i className="fa-solid fa-universal-access"></i>
+              <span>$USD</span>
+              <i className="fa-solid fa-universal-access"></i>
+            </div>
           </div>
         </div>
       </div>
