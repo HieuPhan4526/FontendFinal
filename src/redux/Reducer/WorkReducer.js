@@ -1,4 +1,4 @@
-import { SET_LIST_WORK } from "../Types/WorkType";
+import { SET_LIST_WORK, SET_WORK_BY_NAME, TEN_CONG_VIEC, WORK_BY_NAME, WORK_NAME } from "../Types/WorkType";
 
 const stateDefault = {
     listWork: [
@@ -14,7 +14,9 @@ const stateDefault = {
             "moTaNgan": "Plus - MOST SELLING!\r\nUS$65\r\n3 logo options + source file in Ai, EPS, SVG, PDF, and PSD\r\n\r\n2 Days Delivery\r\n5 Revisions\r\n3 concepts included\r\nLogo transparency\r\nVector file\r\nPrintable file\r\nSource file",
             "saoCongViec": 1
         },
-    ]
+    ],
+    workNameValue: ""
+
 };
 
 export const WorkReducer = (state = stateDefault, action) => {
@@ -23,8 +25,15 @@ export const WorkReducer = (state = stateDefault, action) => {
             state.listWork = action.listWork;
             return { ...state };
         }
+        case WORK_NAME: {
+            localStorage.setItem(WORK_NAME, JSON.stringify(action.newWorkName));
+            state.workNameValue = action.newWorkName;
+            return { ...state };
+        }
+        case SET_WORK_BY_NAME: {
 
-
+            return { ...state };
+        }
         default: {
             return { ...state };
 

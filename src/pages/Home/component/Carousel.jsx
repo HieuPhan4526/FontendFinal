@@ -6,15 +6,28 @@ import "swiper/css/navigation";
 import "../../../assets/css/styleSwiper.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
-import { getListWorkAction } from "../../../redux/Actions/WorkAction.";
+import {
+  getListWorkAction,
+  getWorkByName,
+  getWorkByNameAction,
+} from "../../../redux/Actions/WorkAction.";
+import { WORK_BY_NAME, WORK_NAME } from "../../../redux/Types/WorkType";
 
 export default function Carousel(props) {
   let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
   console.log(listWork);
+  let { workNameValue } = useSelector((rootReducer) => rootReducer.WorkReducer);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
   }, []);
+  useEffect(() => {
+    dispatch(getWorkByNameAction(workNameValue));
+  }, [workNameValue]);
+
+  const typingTimeoutRef = useRef(null);
+
   const renderListWork = () => {
     return listWork.map((work, index) => {
       return (
@@ -28,6 +41,28 @@ export default function Carousel(props) {
       );
     });
   };
+
+  const handleChange = (event) => {
+    let { name, value } = event.target;
+
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      const newWorkName = value;
+      dispatch({
+        type: WORK_NAME,
+        newWorkName: newWorkName,
+      });
+    }, 1000);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  console.log(workNameValue);
+
   const handleForcus = () => {
     let workBannerInput = document.getElementById("work_banner");
     workBannerInput.classList.add("workBanner");
@@ -37,6 +72,7 @@ export default function Carousel(props) {
     let workBannerInput = document.getElementById("work_banner");
     workBannerInput.classList.remove("workBanner");
   };
+
   return (
     <Fragment>
       <div style={{ position: "relative", height: "auto" }}>
@@ -98,7 +134,7 @@ export default function Carousel(props) {
               <i> freelance </i>
               services for your business
             </h3>
-            <form className="input-group mb-3 ">
+            <form onSubmit={handleSubmit} className="input-group mb-3 ">
               <input
                 type="text"
                 id="congViecTimKiem"
@@ -109,6 +145,7 @@ export default function Carousel(props) {
                 aria-describedby="button-addon2"
                 onFocus={handleForcus}
                 onBlur={handleBlur}
+                onChange={handleChange}
               />
               <div className="input-group-append">
                 <button
