@@ -1,7 +1,5 @@
 import axios from "axios";
-import { DOMAIN } from "../../../ReactFinal/src/ultil/setting";
-import { TOKEN_CYBER } from "../utils/setting";
-
+import { DOMAIN, TOKEN_CYBER } from "../utils/setting";
 
 export class baseServices {
     constructor() { }

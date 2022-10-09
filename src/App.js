@@ -5,6 +5,8 @@ import { Router, Switch } from 'react-router-dom';
 
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
+import { CategoriesTemplate } from './templates/CategoriesTemplate';
+import GraphicsDesign from './pages/GraphicsDesign/GraphicsDesign';
 
 export const history = createBrowserHistory();
 
@@ -14,6 +16,8 @@ function App() {
       <Router history={history}>
         <Switch>
           <HomeTemplate exact path="/home" Component={Home} />
+          <HomeTemplate exact path="/" Component={Home} />
+          <CategoriesTemplate exact path = "/categories/graphics-design" Component = {GraphicsDesign}/>
         </Switch>
       </Router>
     </div>

@@ -1,0 +1,23 @@
+.swiper-slide {
+    margin: 5px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 0.14px 2.29266px rgb(0 0 0 / 3%), 0 0.37px 4.42626px rgb(0 0 0 / 5%), 0 3px 7px rgb(0 0 0 / 9%);
+}
+.swiper-wrapper{
+    padding: 10px;
+}
+.banner-slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.banner-slide span {
+    display: inline;
+}
+
+.banner-slide img {
+    width: 48px;
+    height: 48px;
+}
