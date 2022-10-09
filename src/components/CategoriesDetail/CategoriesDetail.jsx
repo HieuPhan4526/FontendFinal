@@ -1,14 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import { workService } from '../../services/WorkService'
-
+import "./CategoriesDetail.css"
+import { ArrowRightOutlined } from '@ant-design/icons';
 export default function CategoriesDetail() {
   let [state, setState] = useState([]);
+  const RenderCateItem = () => {
+    return state.map((group, index) => {
+      return <div className="cate-item" key={index}>
+        <div className="cate-img" style={{
+          background: `url('${group.hinhAnh}')`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}></div>
+        <h3 className="cate-title">
+          {group.tenNhom}
+        </h3>
+        <div className="cate-options">
+          {group.dsChiTietLoai.map((kind,index) => {
+            return <div className='option-item' key={index}>
+              <span className='text'>{kind.tenChiTiet}</span>
+              <span className='cate-options-icon'>
+                <ArrowRightOutlined />
+              </span>
+            </div>
+          })}
 
-  console.log(state)
+
+        </div>
+      </div>
+    })
+
+  }
   useEffect(() => {
     const getData = () => {
       workService.GetCategoriesWorkDetail().then((result) => {
-        setState(result.data.content);
+        setState(result.data.content[0].dsNhomChiTietLoai);
       }).catch((error) => { console.log(error) })
     }
     getData()
@@ -16,12 +42,9 @@ export default function CategoriesDetail() {
 
 
   return (
-    <div className='container'>
-      <div className="row">
-        <div className="col-3">1</div>
-        <div className="col-3">1</div>
-        <div className="col-3">1</div>
-        <div className="col-3">1</div>
+    <div>
+      <div className="cate-content py-3">
+        {state === [] ? "" : RenderCateItem()}
       </div>
     </div>
   )

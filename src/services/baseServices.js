@@ -7,8 +7,8 @@ export class baseServices {
         return axios({
             method: "GET",
             url: `${DOMAIN}${url}`,
-            header: {
-                "tokenCybersoft": TOKEN_CYBER
+            headers: {
+                "tokenCybersoft": TOKEN_CYBER,
             },
             path: {
                 "id": id
