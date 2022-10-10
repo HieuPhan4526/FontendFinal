@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { workService } from '../../services/WorkService'
 import "./CategoriesDetail.css"
 import { ArrowRightOutlined } from '@ant-design/icons';
-export default function CategoriesDetail() {
+import { workService } from '../../../../services/WorkService';
+export default function CategoriesDetail(props) {
   let [state, setState] = useState([]);
   const RenderCateItem = () => {
     return state.map((group, index) => {
@@ -33,7 +33,7 @@ export default function CategoriesDetail() {
   }
   useEffect(() => {
     const getData = () => {
-      workService.GetCategoriesWorkDetail().then((result) => {
+      workService.GetCategoriesWorkDetail(props.id).then((result) => {
         setState(result.data.content[0].dsNhomChiTietLoai);
       }).catch((error) => { console.log(error) })
     }
