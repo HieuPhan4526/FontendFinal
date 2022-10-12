@@ -1,1 +1,1 @@
-abc
+export const SET_LIST_WORK = "SET_LIST_WORK"
