@@ -2,8 +2,8 @@ import React from 'react'
 import BannerButton from './component/BannerButton/BannerButton'
 import BannerSlider from './component/BannerSlider/BannerSlider'
 import CategoriesDetail from './component/CategoriesDetail/CategoriesDetail'
-import "./GraphicsDesign.css"
-export default function GraphicsDesign(props) {
+import "./Categories.css"
+export default function Categories(props) {
     const CategoriesPages = [
         { id: 1, url: "/categories/graphics-design", name: "Graphics & Design", slogan: "Designs to make you stand out.", banner: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415203/graphics-design-desktop.png" },
         { id: 2, url: "/categories/digital-marketing", name: "Digital Marketing", slogan: "Build your brand. Grow your business.", banner: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415207/digital-marketing-desktop.png" },

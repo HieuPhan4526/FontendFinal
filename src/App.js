@@ -5,7 +5,7 @@ import { Router, Switch } from 'react-router-dom';
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import { CategoriesTemplate } from './templates/CategoriesTemplate';
-import GraphicsDesign from './pages/GraphicsDesign/GraphicsDesign';
+import Categories from './pages/GraphicsDesign/Categories';
 
 export const history = createBrowserHistory();
 
@@ -17,14 +17,14 @@ function App() {
           <HomeTemplate exact path="/home" Component={Home} />
           <HomeTemplate exact path="/" Component={Home} />
 
-          <CategoriesTemplate exact path = "/categories/graphics-design" Component = {GraphicsDesign}/>
-          <CategoriesTemplate exact path = "/categories/digital-marketing" Component = {GraphicsDesign}/>
-          <CategoriesTemplate exact path = "/categories/writing-translation" Component = {GraphicsDesign}/>
-          <CategoriesTemplate exact path = "/categories/video-animation" Component = {GraphicsDesign}/>
-          <CategoriesTemplate exact path = "/categories/music-audio" Component = {GraphicsDesign}/>
-          <CategoriesTemplate exact path = "/categories/programing-tech" Component = {GraphicsDesign}/>
-          <CategoriesTemplate exact path = "/categories/business" Component = {GraphicsDesign}/>
-          <CategoriesTemplate exact path = "/categories/lifestyle" Component = {GraphicsDesign}/>
+          <CategoriesTemplate exact path = "/categories/graphics-design" Component = {Categories}/>
+          <CategoriesTemplate exact path = "/categories/digital-marketing" Component = {Categories}/>
+          <CategoriesTemplate exact path = "/categories/writing-translation" Component = {Categories}/>
+          <CategoriesTemplate exact path = "/categories/video-animation" Component = {Categories}/>
+          <CategoriesTemplate exact path = "/categories/music-audio" Component = {Categories}/>
+          <CategoriesTemplate exact path = "/categories/programing-tech" Component = {Categories}/>
+          <CategoriesTemplate exact path = "/categories/business" Component = {Categories}/>
+          <CategoriesTemplate exact path = "/categories/lifestyle" Component = {Categories}/>
         </Switch>
       </Router>
     </div>
