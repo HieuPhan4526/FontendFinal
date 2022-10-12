@@ -21,7 +21,6 @@ export default function Carousel(props) {
   );
   let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
   let { workNameValue } = useSelector((rootReducer) => rootReducer.WorkReducer);
-  console.log(listWorkSearch);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
