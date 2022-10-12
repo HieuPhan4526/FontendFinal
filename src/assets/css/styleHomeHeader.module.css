@@ -8,4 +8,5 @@
     background-color: white;
     color: black !important;
     opacity: 1 !important;
+    visibility: visible !important; 
 }

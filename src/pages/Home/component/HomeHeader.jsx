@@ -54,6 +54,7 @@ export default function Header() {
             style={{
               width: "45%",
               opacity: "0",
+              visibility: "hidden",
             }}
           >
             <form className="d-flex">
