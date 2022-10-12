@@ -1,20 +1,13 @@
-.header{
-    position: fixed;
-    width: 100%;
-    z-index:  99;
-    color: white;
+.logo{
+    font-size: 30px;
+    font-weight: 900;
 }
-.sticky{
-    background-color: white;
-    color: black !important;
-    opacity: 1 !important;
-}
+
 .menuHeader{
     background-color: white;
     padding: 0 32px;
     margin: 0 auto;
     max-width: 1400px;
-    opacity: 0;
 }
 .menuHeader ul {
     list-style: none;
@@ -36,7 +29,6 @@
 
 }
 .menuHeader p {
-
     color: #74767e;
     font-weight: 400;
 }

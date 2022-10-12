@@ -22,7 +22,6 @@ export const getWorkByNameAction = (tenCongViec) => {
             dispatch({
                 type: SET_WORK_BY_NAME,
                 tenCongViec: result.data.content
-
             });
         } catch (error) {
             console.log(error);

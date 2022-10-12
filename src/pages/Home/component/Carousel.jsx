@@ -12,12 +12,16 @@ import {
   getWorkByNameAction,
 } from "../../../redux/Actions/WorkAction.";
 import { WORK_BY_NAME, WORK_NAME } from "../../../redux/Types/WorkType";
+import { history } from "../../../App";
+import { NavLink } from "react-router-dom";
 
 export default function Carousel(props) {
+  let { listWorkSearch } = useSelector(
+    (rootReducer) => rootReducer.WorkReducer
+  );
   let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
-  console.log(listWork);
   let { workNameValue } = useSelector((rootReducer) => rootReducer.WorkReducer);
-
+  console.log(listWorkSearch);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
@@ -29,48 +33,63 @@ export default function Carousel(props) {
   const typingTimeoutRef = useRef(null);
 
   const renderListWork = () => {
-    return listWork.map((work, index) => {
-      return (
-        <li
-          className="font-weight-bold"
-          style={{ lineHeight: "35px" }}
-          key={index}
-        >
-          {work.tenCongViec}
-        </li>
-      );
-    });
+    if (workNameValue.trim() !== "") {
+      return listWorkSearch.map((work, index) => {
+        return (
+          <li
+            className="font-weight-bold"
+            style={{ lineHeight: "35px" }}
+            key={index}
+          >
+            <NavLink className="listWorkSearch" to="/workdetail">
+              {work.congViec.tenCongViec}
+            </NavLink>
+          </li>
+        );
+      });
+    } else {
+      return listWork?.map((work, index) => {
+        return (
+          <li
+            className="font-weight-bold"
+            style={{ lineHeight: "35px" }}
+            key={index}
+          >
+            <NavLink className="listWorkSearch" to="/workdetail">
+              {work.tenCongViec}
+            </NavLink>
+          </li>
+        );
+      });
+    }
   };
 
   const handleChange = (event) => {
     let { name, value } = event.target;
-
-    if (typingTimeoutRef.current) {
-      clearTimeout(typingTimeoutRef);
-    }
-
-    typingTimeoutRef.current = setTimeout(() => {
-      const newWorkName = value;
-      dispatch({
-        type: WORK_NAME,
-        newWorkName: newWorkName,
-      });
-    }, 1000);
+    const newWorkName = value;
+    dispatch({
+      type: WORK_NAME,
+      newWorkName: newWorkName,
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-  console.log(workNameValue);
 
   const handleForcus = () => {
     let workBannerInput = document.getElementById("work_banner");
-    workBannerInput.classList.add("workBanner");
+    workBannerInput.classList.toggle("workBanner");
   };
-
   const handleBlur = () => {
-    let workBannerInput = document.getElementById("work_banner");
-    workBannerInput.classList.remove("workBanner");
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      let workBannerInput = document.getElementById("work_banner");
+      workBannerInput.classList.toggle("workBanner");
+    }, 100);
   };
 
   return (
@@ -117,18 +136,11 @@ export default function Carousel(props) {
             />
           </SwiperSlide>
         </Swiper>
-        <div
-          className="container"
-          style={{
-            position: "absolute",
-            display: "flex",
-            textAlign: "start",
-            top: "120px",
-            left: "120px",
-            zIndex: "2",
-          }}
-        >
-          <div style={{ maxWidth: "600px", position: "relative" }}>
+        <div className="max-width-container">
+          <div
+            className="reponsive_headerCarousel"
+            style={{ padding: "48 0", position: "absolute" }}
+          >
             <h3 className="text-light" style={{ fontSize: "45px" }}>
               Find the perfect
               <i> freelance </i>
@@ -141,8 +153,6 @@ export default function Carousel(props) {
                 name="congViecTimKiem"
                 className="form-control"
                 placeholder="Try 'building mobile app'"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
                 onFocus={handleForcus}
                 onBlur={handleBlur}
                 onChange={handleChange}

@@ -13,7 +13,6 @@ export class baseServices {
             headers: {
                 "tokenCybersoft": TOKEN_CYBER,
                 'TenCongViec': localStorage.getItem(WORK_NAME),
-
             },
         });
     };
