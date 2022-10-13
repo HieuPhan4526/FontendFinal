@@ -5,6 +5,7 @@ import MultipleSlick from "./component/MultipleSlick";
 import "../../assets/css/styleHome.css";
 import SimpleSlick from "./component/SimpleSlick";
 import { Button, Modal } from "antd";
+import HomeHeader from "./component/HomeHeader";
 
 export default function Home(props) {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
@@ -28,6 +29,7 @@ export default function Home(props) {
   };
   return (
     <div>
+      <HomeHeader />
       <Carousel />
       <div className="container">
         <h1>Popular profesional services</h1>

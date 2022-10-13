@@ -6,37 +6,97 @@ import "swiper/css/navigation";
 import "../../../assets/css/styleSwiper.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
-import { getListWorkAction } from "../../../redux/Actions/WorkAction.";
+import {
+  getListWorkAction,
+  getWorkByName,
+  getWorkByNameAction,
+} from "../../../redux/Actions/WorkAction.";
+import { WORK_BY_NAME, WORK_NAME } from "../../../redux/Types/WorkType";
+import { history } from "../../../App";
+import { NavLink } from "react-router-dom";
 
 export default function Carousel(props) {
+  let { listWorkSearch } = useSelector(
+    (rootReducer) => rootReducer.WorkReducer
+  );
   let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
-  console.log(listWork);
+  let { workNameValue } = useSelector((rootReducer) => rootReducer.WorkReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
   }, []);
+  useEffect(() => {
+    dispatch(getWorkByNameAction(workNameValue));
+  }, [workNameValue]);
+
+  const typingTimeoutRef = useRef(null);
+
   const renderListWork = () => {
-    return listWork.map((work, index) => {
-      return (
-        <li
-          className="font-weight-bold"
-          style={{ lineHeight: "35px" }}
-          key={index}
-        >
-          {work.tenCongViec}
-        </li>
-      );
-    });
-  };
-  const handleForcus = () => {
-    let workBannerInput = document.getElementById("work_banner");
-    workBannerInput.classList.add("workBanner");
+    if (workNameValue.trim() !== "") {
+      return listWorkSearch.map((workSearch, index) => {
+        return (
+          <li
+            className="font-weight-bold"
+            style={{ lineHeight: "35px" }}
+            key={index}
+          >
+            <NavLink
+              className="listWorkSearch"
+              to={`/workdetail/${workSearch.congViec.tenCongViec}`}
+            >
+              {workSearch.congViec.tenCongViec}
+            </NavLink>
+          </li>
+        );
+      });
+    } else {
+      return listWork?.map((work, index) => {
+        return (
+          <li
+            className="font-weight-bold"
+            style={{ lineHeight: "35px" }}
+            key={index}
+          >
+            <NavLink
+              className="listWorkSearch"
+              to={`/workdetail/${work.tenCongViec}`}
+            >
+              {work.tenCongViec}
+            </NavLink>
+          </li>
+        );
+      });
+    }
   };
 
-  const handleBlur = () => {
-    let workBannerInput = document.getElementById("work_banner");
-    workBannerInput.classList.remove("workBanner");
+  const handleChange = (event) => {
+    let { name, value } = event.target;
+    const newWorkName = value;
+    dispatch({
+      type: WORK_NAME,
+      newWorkName: newWorkName,
+    });
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  const handleForcus = () => {
+    let workBannerInput = document.getElementById("work_banner");
+    workBannerInput.classList.toggle("workBanner");
+  };
+  const handleBlur = () => {
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      let workBannerInput = document.getElementById("work_banner");
+      workBannerInput.classList.remove("workBanner");
+    }, 100);
+  };
+
   return (
     <Fragment>
       <div style={{ position: "relative", height: "auto" }}>
@@ -81,34 +141,26 @@ export default function Carousel(props) {
             />
           </SwiperSlide>
         </Swiper>
-        <div
-          className="container"
-          style={{
-            position: "absolute",
-            display: "flex",
-            textAlign: "start",
-            top: "120px",
-            left: "120px",
-            zIndex: "2",
-          }}
-        >
-          <div style={{ maxWidth: "600px", position: "relative" }}>
+        <div className="max-width-container">
+          <div
+            className="reponsive_headerCarousel"
+            style={{ padding: "48 0", position: "absolute" }}
+          >
             <h3 className="text-light" style={{ fontSize: "45px" }}>
               Find the perfect
               <i> freelance </i>
               services for your business
             </h3>
-            <form className="input-group mb-3 ">
+            <form onSubmit={handleSubmit} className="input-group mb-3 ">
               <input
                 type="text"
                 id="congViecTimKiem"
                 name="congViecTimKiem"
                 className="form-control"
                 placeholder="Try 'building mobile app'"
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
                 onFocus={handleForcus}
                 onBlur={handleBlur}
+                onChange={handleChange}
               />
               <div className="input-group-append">
                 <button

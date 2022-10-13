@@ -88,6 +88,15 @@
     visibility: inherit !important;
 }
 
+.listWorkSearch{
+    line-height: 35px;
+    color: #74767e;
+}
+.max-width-container{
+    padding: 24px 24px 48px;
+    width: 100%;
+}
+
 
 
 
@@ -102,6 +111,12 @@
     }
     .reponsive_footer{
         display: block;
+    }
+    .reponsive_headerCarousel{
+        padding: 96px 64px;
+    }
+    .max-width-container{
+    padding: 32px 32px 64px;
     }
    
 }
@@ -120,6 +135,20 @@
     .Explore-list li {
         width: 20%;
     }
+    .reponsive_headerCarousel{
+        max-width: 560px;
+        padding: 0;
+    }
+    .max-width-container{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+    }
   
 }
 @media  only screen and (min-width: 1160px) {
@@ -132,6 +161,14 @@
     .text_italics {
         font-size: 30px;
         line-height: 44px;  
+    }
+    .reponsive_headerCarousel{
+        max-width: 650px;
+    }
+    .max-width-container{
+        margin: 0 auto;
+        max-width: 1400px;
+    
     }
 }
 
