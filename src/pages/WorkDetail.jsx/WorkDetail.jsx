@@ -5,16 +5,12 @@ import { getMenuTypeWork } from "../../redux/Actions/WorkAction.";
 
 export default function WorkDetail(props) {
   let { tenCongViec } = props.match.params;
-  let { listMenuTypeWork } = useSelector(
-    (rootReducer) => rootReducer.WorkReducer
-  );
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMenuTypeWork());
   }, []);
-  const renderListMenuTypeWork = () => {
-    return listMenuTypeWork.map();
-  };
+
   return (
     <div>
       <header className={`${styleWorkDetail["main"]}`}>
