@@ -5,7 +5,7 @@ import { Router, Switch } from 'react-router-dom';
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import { CategoriesTemplate } from './templates/CategoriesTemplate';
-import Categories from './pages/GraphicsDesign/Categories';
+import Categories from './pages/Categories/Categories';
 
 export const history = createBrowserHistory();
 

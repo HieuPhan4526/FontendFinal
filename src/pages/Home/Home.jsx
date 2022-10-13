@@ -7,6 +7,17 @@ import SimpleSlick from "./component/SimpleSlick";
 import { Button, Modal } from "antd";
 
 export default function Home(props) {
+  var show;
+  show()
+  function show(){
+    console.log("money")
+  }
+  show = function(){
+    console.log("diamond");
+  }
+  function show(){
+    console.log("gem")
+  }
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const showModal = () => {
     setIsModalOpen1(true);

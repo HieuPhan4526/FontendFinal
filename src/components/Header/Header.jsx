@@ -24,7 +24,7 @@ export default function Header() {
           className={`navbar-brand ${
             sticky ? `${styleHeader["sticky"]}` : ""
           } mr-5`}
-          href="#"
+          href="/home"
         >
           Fiiverr.
         </a>
@@ -134,7 +134,7 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a href="/categories/online-marketing?source=category_tree">
+            <a href="/categories/digital-marketing?source=category_tree">
               Digital Marketing
             </a>
           </li>
@@ -154,7 +154,7 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a href="/categories/programming-tech?source=category_tree">
+            <a href="/categories/programing-tech?source=category_tree">
               Programming &amp; Tech
             </a>
           </li>
