@@ -30,7 +30,6 @@ export default function Header(props) {
   }, [workNameValue]);
 
   const typingTimeoutRef = useRef(null);
-
   const renderListMenuTypeWork = () => {
     return listMenuTypeWork.map((menuWork, index) => {
       return (

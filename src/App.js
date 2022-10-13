@@ -6,11 +6,11 @@ import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import { UserTemplate, } from './templates/UserTemplate';
 import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
 import WorkDetail from './pages/WorkDetail.jsx/WorkDetail';
 import { WorkDetailTemplate } from './templates/WorkDetailTemplate';
 import { CategoriesTemplate } from './templates/CategoriesTemplate';
-import Categories from './pages/GraphicsDesign/Categories';
+import Categories from './pages/Categories/Categories';
+import Register from './pages/Register/Register';
 
 export const history = createBrowserHistory();
 
@@ -23,10 +23,7 @@ function App() {
 
           <WorkDetailTemplate exact path="/workdetail/:tenCongViec" Component={WorkDetail} />
 
-
-          <UserTemplate exact path="/login" Component={Login} />
-          <UserTemplate exact path="/register" Component={Register} />
-
+          <HomeTemplate exact path="/" Component={Home} />
 
           <CategoriesTemplate exact path="/categories/graphics-design" Component={Categories} />
           <CategoriesTemplate exact path="/categories/digital-marketing" Component={Categories} />
@@ -37,9 +34,7 @@ function App() {
           <CategoriesTemplate exact path="/categories/business" Component={Categories} />
           <CategoriesTemplate exact path="/categories/lifestyle" Component={Categories} />
 
-
-          <HomeTemplate exact path="/" Component={Home} />
-
+          <CategoriesTemplate exact path="/register" Component={Register} />
         </Switch>
       </Router>
     </div>

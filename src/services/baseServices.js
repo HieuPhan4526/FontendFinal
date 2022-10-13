@@ -16,4 +16,14 @@ export class baseServices {
             },
         });
     };
+    post = (url,data) =>{
+        return axios({
+            method:"POST",
+            url:`${DOMAIN}${url}`,
+            data: data,
+            headers: {
+                "tokenCybersoft": TOKEN_CYBER,
+            },
+        })
+    }
 }
