@@ -6,7 +6,7 @@ import Header from "../components/Header/Header";
 export const CategoriesTemplate = (props) => {
     return <Route  {...props} render={(propsRoute) => {
         return <Fragment>
-            <Header />
+            <Header {...propsRoute} />
             <props.Component {...propsRoute} />
             <Footer />
         </Fragment>;
