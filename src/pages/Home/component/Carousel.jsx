@@ -33,15 +33,18 @@ export default function Carousel(props) {
 
   const renderListWork = () => {
     if (workNameValue.trim() !== "") {
-      return listWorkSearch.map((work, index) => {
+      return listWorkSearch.map((workSearch, index) => {
         return (
           <li
             className="font-weight-bold"
             style={{ lineHeight: "35px" }}
             key={index}
           >
-            <NavLink className="listWorkSearch" to="/workdetail">
-              {work.congViec.tenCongViec}
+            <NavLink
+              className="listWorkSearch"
+              to={`/workdetail/${workSearch.congViec.tenCongViec}`}
+            >
+              {workSearch.congViec.tenCongViec}
             </NavLink>
           </li>
         );
@@ -54,7 +57,10 @@ export default function Carousel(props) {
             style={{ lineHeight: "35px" }}
             key={index}
           >
-            <NavLink className="listWorkSearch" to="/workdetail">
+            <NavLink
+              className="listWorkSearch"
+              to={`/workdetail/${work.tenCongViec}`}
+            >
               {work.tenCongViec}
             </NavLink>
           </li>
@@ -87,7 +93,7 @@ export default function Carousel(props) {
 
     typingTimeoutRef.current = setTimeout(() => {
       let workBannerInput = document.getElementById("work_banner");
-      workBannerInput.classList.toggle("workBanner");
+      workBannerInput.classList.remove("workBanner");
     }, 100);
   };
 

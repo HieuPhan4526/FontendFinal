@@ -1,20 +1,115 @@
-import React, { useEffect, useState } from "react";
-import { Fragment } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { history } from "../../App";
 import styleHeader from "../../assets/css/styleHeader.module.css";
 import styleWorkDetail from "../../assets/css/styleWorkDetail.module.css";
+import {
+  getListWorkAction,
+  getMenuTypeWork,
+  getWorkByNameAction,
+} from "../../redux/Actions/WorkAction.";
+import { WORK_NAME } from "../../redux/Types/WorkType";
 
 export default function Header(props) {
+  let { tenCongViec } = props.match.params;
+  let { listWorkSearch } = useSelector(
+    (rootReducer) => rootReducer.WorkReducer
+  );
+  let { listWork, workNameValue, listMenuTypeWork } = useSelector(
+    (rootReducer) => rootReducer.WorkReducer
+  );
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getListWorkAction());
+    dispatch(getMenuTypeWork());
+  }, []);
+  useEffect(() => {
+    dispatch(getWorkByNameAction(workNameValue));
+  }, [workNameValue]);
+
+  const typingTimeoutRef = useRef(null);
+
+  const renderListMenuTypeWork = () => {
+    return listMenuTypeWork.map((menuWork, index) => {
+      return (
+        <Fragment key={index}>
+          <li>
+            <a href="#">{menuWork.tenLoaiCongViec}</a>
+          </li>
+        </Fragment>
+      );
+    });
+  };
+
+  const renderListWork = () => {
+    if (workNameValue.trim() !== "") {
+      return listWorkSearch.map((workSearch, index) => {
+        return (
+          <li
+            className="font-weight-bold"
+            style={{ lineHeight: "35px" }}
+            key={index}
+          >
+            <NavLink
+              className="listWorkSearch"
+              to={`/workdetail/${workSearch.congViec.tenCongViec}`}
+            >
+              {workSearch.congViec.tenCongViec}
+            </NavLink>
+          </li>
+        );
+      });
+    } else {
+      return listWork?.map((work, index) => {
+        return (
+          <li
+            className="font-weight-bold"
+            style={{ lineHeight: "35px" }}
+            key={index}
+          >
+            <NavLink
+              className="listWorkSearch"
+              to={`/workdetail/${work.tenCongViec}`}
+            >
+              {work.tenCongViec}
+            </NavLink>
+          </li>
+        );
+      });
+    }
+  };
+  const handleChange = (event) => {
+    let { name, value } = event.target;
+    const newWorkName = value;
+    dispatch({
+      type: WORK_NAME,
+      newWorkName: newWorkName,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   const handleForcus = () => {
     let inputSearch = document.querySelector(".overlay");
-    console.log(inputSearch);
     inputSearch.classList.toggle(`${styleWorkDetail["overlayWorkDetail"]}`);
+    let workBannerInput = document.getElementById("work_banner");
+    workBannerInput.classList.toggle("workBanner");
   };
   const handleBlur = () => {
     let inputSearch = document.querySelector(".overlay");
-    console.log(inputSearch);
     inputSearch.classList.remove(`${styleWorkDetail["overlayWorkDetail"]}`);
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      let workBannerInput = document.getElementById("work_banner");
+      workBannerInput.classList.remove("workBanner");
+    }, 100);
   };
 
   return (
@@ -63,14 +158,15 @@ export default function Header(props) {
                 width: "45%",
               }}
             >
-              <form className="d-flex">
+              <form onSubmit={handleSubmit} className="d-flex">
                 <input
                   className="form-control mr-sm-2"
                   type="search"
-                  placeholder="Search"
+                  placeholder={tenCongViec}
                   aria-label="Search"
                   onFocus={handleForcus}
                   onBlur={handleBlur}
+                  onChange={handleChange}
                 />
                 <button
                   className="btn btn-outline-success my-2 my-sm-0"
@@ -79,6 +175,20 @@ export default function Header(props) {
                   Search
                 </button>
               </form>
+              <ul
+                id="work_banner"
+                style={{
+                  position: "absolute",
+                  backgroundColor: "white",
+                  listStyle: "none",
+                  padding: "20px",
+                  boxShadow: "20px 20px 50px 15px grey",
+                  opacity: "0",
+                  visibility: "hidden",
+                }}
+              >
+                {renderListWork()}
+              </ul>
             </div>
             <ul className={`navbar-nav`}>
               <li className="nav-item">
@@ -129,47 +239,7 @@ export default function Header(props) {
         </nav>
         <nav className={`${styleHeader["menuHeader"]}`}>
           <hr />
-          <ul>
-            <li>
-              <a href="/categories/graphics-design?source=category_tree">
-                Graphics &amp; Design
-              </a>
-            </li>
-            <li>
-              <a href="/categories/online-marketing?source=category_tree">
-                Digital Marketing
-              </a>
-            </li>
-            <li>
-              <a href="/categories/writing-translation?source=category_tree">
-                Writing &amp; Translation
-              </a>
-            </li>
-            <li>
-              <a href="/categories/video-animation?source=category_tree">
-                Video &amp; Animation
-              </a>
-            </li>
-            <li>
-              <a href="/categories/music-audio?source=category_tree">
-                Music &amp; Audio
-              </a>
-            </li>
-            <li>
-              <a href="/categories/programming-tech?source=category_tree">
-                Programming &amp; Tech
-              </a>
-            </li>
-            <li>
-              <a href="/categories/business?source=category_tree">Business</a>
-            </li>
-            <li>
-              <a href="/categories/lifestyle?source=category_tree">Lifestyle</a>
-            </li>
-            <li>
-              <p className="m-0">Trending</p>
-            </li>
-          </ul>
+          <ul>{renderListMenuTypeWork()}</ul>
           <hr />
         </nav>
       </div>

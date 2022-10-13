@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styleWorkDetail from "../../assets/css/styleWorkDetail.module.css";
+import { getMenuTypeWork } from "../../redux/Actions/WorkAction.";
 
 export default function WorkDetail(props) {
-  console.log(props);
+  let { tenCongViec } = props.match.params;
+  let { listMenuTypeWork } = useSelector(
+    (rootReducer) => rootReducer.WorkReducer
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMenuTypeWork());
+  }, []);
+  const renderListMenuTypeWork = () => {
+    return listMenuTypeWork.map();
+  };
   return (
     <div>
       <header className={`${styleWorkDetail["main"]}`}>
@@ -20,7 +32,7 @@ export default function WorkDetail(props) {
       <div className={`${styleWorkDetail["results"]}`}>
         <div className={`${styleWorkDetail["results-header"]}`}>
           <span className={`${styleWorkDetail["title"]}`}>
-            Results for "HTML"
+            Results for "{tenCongViec}"
           </span>
         </div>
       </div>

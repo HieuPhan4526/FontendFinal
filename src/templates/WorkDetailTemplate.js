@@ -7,7 +7,7 @@ import styleWorkDetail from "../assets/css/styleWorkDetail.module.css";
 export const WorkDetailTemplate = (props) => {
     return <Route  {...props} render={(propsRoute) => {
         return <div  >
-            <Header />
+            <Header {...propsRoute} />
             <props.Component {...propsRoute} />
             <Footer />
         </div>;

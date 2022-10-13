@@ -1,5 +1,5 @@
 import { administrativeJob } from "../../services/WorkService";
-import { SET_LIST_WORK, SET_WORK_BY_NAME } from "../Types/WorkType";
+import { SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME } from "../Types/WorkType";
 
 export const getListWorkAction = () => {
     return async dispatch => {
@@ -18,10 +18,27 @@ export const getListWorkAction = () => {
 export const getWorkByNameAction = (tenCongViec) => {
     return async dispatch => {
         try {
-            let result = await administrativeJob.getWorkByNameService(tenCongViec);
+            if (tenCongViec !== "") {
+
+                let result = await administrativeJob.getWorkByNameService(tenCongViec);
+                dispatch({
+                    type: SET_WORK_BY_NAME,
+                    tenCongViec: result.data.content
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+    };
+};
+export const getMenuTypeWork = () => {
+    return async dispatch => {
+        try {
+            let result = await administrativeJob.getMenuTypeWork();
             dispatch({
-                type: SET_WORK_BY_NAME,
-                tenCongViec: result.data.content
+                type: SET_MENU_TYPE_WORK,
+                listMenuTypeWork: result.data.content
             });
         } catch (error) {
             console.log(error);
