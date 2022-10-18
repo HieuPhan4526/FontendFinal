@@ -6,7 +6,7 @@ import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import { UserTemplate, } from './templates/UserTemplate';
 import Login from './pages/Login/Login';
-import WorkDetail from './pages/WorkDetail.jsx/WorkDetail';
+import WorkDetail from './pages/WorkDetail/WorkDetail';
 import { WorkDetailTemplate } from './templates/WorkDetailTemplate';
 import { CategoriesTemplate } from './templates/CategoriesTemplate';
 import Categories from './pages/Categories/Categories';

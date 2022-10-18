@@ -117,10 +117,10 @@ export default function BannerSlider(props) {
       ]
     },
   ]
-  return sliderOnPages.map((slider) => {
+  return sliderOnPages.map((slider, index) => {
     if (props.id === slider.id) {
       return (
-        <div>
+        <div key={index}>
           <Swiper
             slidesPerView={4}
             slidesPerGroup={5}
