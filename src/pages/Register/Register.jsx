@@ -1,12 +1,10 @@
 import React from "react";
-import "./Register.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { userService } from "../../services/UserService";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { SignUpAction } from "../../redux/Actions/UserAction";
 import { history } from "../../App";
-
+import styleRegister from "../../assets/css/LoginRegister.module.css"
 export default function Register() {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -32,26 +30,25 @@ export default function Register() {
       ),
     }),
     onSubmit: (values) => {
-      dispatch(SignUpAction(values));
-      history.push("/home");
+      dispatch(SignUpAction(values))
     },
   });
   return (
     <div>
-      <section className="signup">
-        <div className="container">
-          <div className="signup-content">
-            <div className="signup-form">
-              <h2 className="form-title">Đăng ký tài khoản :</h2>
+      <section className={styleRegister["signup"]}>
+        <div className={styleRegister["container"]}>
+          <div className={styleRegister["signup-content"]}>
+            <div className={styleRegister["signup-form"]}>
+              <h2 className={styleRegister["form-title"]}>Đăng ký tài khoản :</h2>
               <form
                 method="POST"
-                className="register-form"
+                className={styleRegister["register-form"]}
                 id="register-form"
                 onSubmit={formik.handleSubmit}
               >
-                <div className="form-group">
+                <div className={styleRegister["form-group"]}>
                   <label htmlFor="email">
-                    <i className="zmdi zmdi-email" />
+                    <i className={styleRegister["zmdi zmdi-email"]} />
                   </label>
                   <input
                     onChange={formik.handleChange}
@@ -64,7 +61,7 @@ export default function Register() {
                     <div className="text-danger">{formik.errors.email}</div>
                   ) : null}
                 </div>
-                <div className="form-group">
+                <div className={styleRegister["form-group"]}>
                   <label htmlFor="name">
                     <i className="zmdi zmdi-account material-icons-name" />
                   </label>
@@ -79,7 +76,7 @@ export default function Register() {
                     <div className="text-danger">{formik.errors.name}</div>
                   ) : null}
                 </div>
-                <div className="form-group">
+                <div className={styleRegister["form-group"]}>
                   <label htmlFor="phone">
                     <i className="zmdi zmdi-account material-icons-name" />
                   </label>
@@ -94,7 +91,7 @@ export default function Register() {
                     <div className="text-danger">{formik.errors.phone}</div>
                   ) : null}
                 </div>
-                <div className="form-group">
+                <div className={styleRegister["form-group"]}>
                   <label htmlFor="password">
                     <i className="zmdi zmdi-lock" />
                   </label>
@@ -109,7 +106,7 @@ export default function Register() {
                     <div className="text-danger">{formik.errors.password}</div>
                   ) : null}
                 </div>
-                <div className="form-group">
+                <div className={styleRegister["form-group"]}>
                   <label htmlFor="re-password">
                     <i className="zmdi zmdi-lock-outline" />
                   </label>
@@ -126,19 +123,19 @@ export default function Register() {
                     </div>
                   ) : null}
                 </div>
-                <div className="form-group form-button">
+                <div className={styleRegister["form-group", "form-button"]}>
                   <input
                     onChange={formik.handleChange}
                     type="submit"
                     name="signup"
                     id="signup"
-                    className="form-submit"
+                    className={styleRegister["form-submit"]}
                     defaultValue="Register"
                   />
                 </div>
               </form>
             </div>
-            <div className="signup-image"></div>
+            <div className={styleRegister["signup-image"]}></div>
           </div>
         </div>
       </section>
