@@ -14,7 +14,6 @@ export const WorkReducer = (state = stateDefault, action) => {
             return { ...state };
         }
         case WORK_NAME: {
-            localStorage.setItem(WORK_NAME, JSON.stringify(action.newWorkName));
             state.workNameValue = action.newWorkName;
             return { ...state };
         }

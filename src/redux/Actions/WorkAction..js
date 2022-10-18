@@ -19,7 +19,6 @@ export const getWorkByNameAction = (tenCongViec) => {
     return async dispatch => {
         try {
             if (tenCongViec !== "") {
-
                 let result = await administrativeJob.getWorkByNameService(tenCongViec);
                 dispatch({
                     type: SET_WORK_BY_NAME,
@@ -40,6 +39,17 @@ export const getMenuTypeWork = () => {
                 type: SET_MENU_TYPE_WORK,
                 listMenuTypeWork: result.data.content
             });
+        } catch (error) {
+            console.log(error);
+        }
+
+    };
+};
+export const getDetailTypeWorkAction = (maChiTietLoai) => {
+    return async dispatch => {
+        try {
+            let result = await administrativeJob.getDetailTypeWork(maChiTietLoai);
+            console.log(result);
         } catch (error) {
             console.log(error);
         }

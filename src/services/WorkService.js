@@ -18,6 +18,9 @@ export class AdministrativeJob extends baseServices {
     getMenuTypeWork = () => {
         return this.get(`/api/cong-viec/lay-menu-loai-cong-viec`);
     };
+    getDetailTypeWork = (maChiTietLoai) => {
+        return this.get(`/api/cong-viec/lay-cong-viec-theo-chi-tiet-loai/${maChiTietLoai}`);
+    };
 }
 
 export const administrativeJob = new AdministrativeJob();

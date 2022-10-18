@@ -21,7 +21,7 @@ function App() {
         <Switch>
           <HomeTemplate exact path="/home" Component={Home} />
 
-          <WorkDetailTemplate exact path="/workdetail/:tenCongViec" Component={WorkDetail} />
+          <WorkDetailTemplate exact path="/workdetail/:maChiTietLoaiCongViec/:tenCongViec" Component={WorkDetail} />
 
           <HomeTemplate exact path="/" Component={Home} />
 

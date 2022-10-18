@@ -13,12 +13,9 @@ import { WORK_NAME } from "../../redux/Types/WorkType";
 
 export default function Header(props) {
   let { tenCongViec } = props.match.params;
-  let { listWorkSearch } = useSelector(
-    (rootReducer) => rootReducer.WorkReducer
-  );
-  let { listWork, workNameValue, listMenuTypeWork } = useSelector(
-    (rootReducer) => rootReducer.WorkReducer
-  );
+
+  let { listWork, workNameValue, listMenuTypeWork, listWorkSearch } =
+    useSelector((rootReducer) => rootReducer.WorkReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
@@ -108,7 +105,7 @@ export default function Header(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${workSearch.congViec.tenCongViec}`}
+              to={`/workdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -125,7 +122,7 @@ export default function Header(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${work.tenCongViec}`}
+              to={`/workdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>

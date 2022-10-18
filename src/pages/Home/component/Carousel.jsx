@@ -28,7 +28,7 @@ export default function Carousel(props) {
   useEffect(() => {
     dispatch(getWorkByNameAction(workNameValue));
   }, [workNameValue]);
-
+  console.log(listWork);
   const typingTimeoutRef = useRef(null);
 
   const renderListWork = () => {
@@ -42,7 +42,7 @@ export default function Carousel(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${workSearch.congViec.tenCongViec}`}
+              to={`/workdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -59,7 +59,7 @@ export default function Carousel(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${work.tenCongViec}`}
+              to={`/workdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>

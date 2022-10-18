@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styleWorkDetail from "../../assets/css/styleWorkDetail.module.css";
 import {
+  getDetailTypeWorkAction,
   getMenuTypeWork,
   getWorkByNameAction,
 } from "../../redux/Actions/WorkAction.";
+import { MA_CHI_TIET_LOAI } from "../../redux/Types/WorkType";
 export default function WorkDetail(props) {
-  let { tenCongViec } = props.match.params;
-  let { listWorkSearch } = useSelector(
-    (rootReducer) => rootReducer.WorkReducer
-  );
+  let { maChiTietLoaiCongViec, tenCongViec } = props.match.params;
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getWorkByNameAction(tenCongViec));
+    dispatch(getDetailTypeWorkAction(maChiTietLoaiCongViec));
   }, []);
-  console.log(listWorkSearch);
+  console.log(maChiTietLoaiCongViec);
 
   return (
     <div>
