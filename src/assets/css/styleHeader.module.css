@@ -1,14 +1,15 @@
-.logo{
+.logo {
     font-size: 30px;
     font-weight: 900;
 }
 
-.menuHeader{
+.menuHeader {
     background-color: white;
     padding: 0 32px;
     margin: 0 auto;
     max-width: 1400px;
 }
+
 .menuHeader ul {
     list-style: none;
     display: flex;
@@ -18,6 +19,7 @@
     max-width: 1400px;
     padding: 0;
 }
+
 .menuHeader a {
     color: #62646a;
     display: inline-block;
@@ -28,6 +30,7 @@
 .menuHeader a:hover{
     color: red;
 }
+
 .menuHeader p {
     color: #74767e;
     font-weight: 400;
@@ -35,4 +38,58 @@
 .hiddenMenuDsChiTiet{
     opacity: 1 !important;
     visibility: inherit !important;
+}
+
+.navbar-ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    
+}
+.navbar-ul .nav-item {
+    cursor: pointer;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background-color: #1dbf73;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    border: none;
+    position: relative;
+}
+
+.avatar::before {
+    content: "";
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.avatar::after {
+    content: "";
+    background-color: #1dbf73;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+
+.avatar-text {
+    color: #fff;
+    font-size: 49%;
+    text-transform: uppercase;
+    font-weight: 600;
 }

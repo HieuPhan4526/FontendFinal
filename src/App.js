@@ -35,6 +35,7 @@ function App() {
           <CategoriesTemplate exact path="/categories/lifestyle" Component={Categories} />
 
           <CategoriesTemplate exact path="/register" Component={Register} />
+          <CategoriesTemplate exact path="/login" Component={Login} />
         </Switch>
       </Router>
     </div>
