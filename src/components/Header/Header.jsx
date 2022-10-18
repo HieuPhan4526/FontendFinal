@@ -230,14 +230,12 @@ export default function Header(props) {
               data-toggle="dropdown"
               aria-expanded="false"
               style={{
-                // backgroundColor: `#${user?.phone.slice(0, 6)}`,
                 backgroundColor: "black",
                 position: "relative",
               }}
             >
               <div className={styleHeader["avatar-text"]}>
-                {/* {user?.name.charAt(0)} */}
-                abc
+                <i class="fa-regular fa-user"></i>
               </div>
             </button>
             <div
