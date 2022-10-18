@@ -19,16 +19,20 @@
     padding: 0;
 }
 .menuHeader a {
-     color: #62646a;
-    display: block;
+    color: #62646a;
+    display: inline-block;
     font-size: 16px;
-    line-height: 24px;
-    padding: 8px 0;
     position: relative;
     text-decoration: none;
-
+}
+.menuHeader a:hover{
+    color: red;
 }
 .menuHeader p {
     color: #74767e;
     font-weight: 400;
+}
+.hiddenMenuDsChiTiet{
+    opacity: 1 !important;
+    visibility: inherit !important;
 }

@@ -62,7 +62,7 @@
 .floating-top-bar{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     font-size: 16px;
     font-weight: 600;
     max-width: 1400px;
@@ -81,4 +81,14 @@
     display: flex;
     align-items: baseline;
     list-style: none;
+}
+.top-filters-button{
+    margin: 0 6px 0 0;
+    color: #222325;
+    font-size: 16px;
+    font-weight: 550;
+    border: 1px solid #dadbdd;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 6px 12px;
 }

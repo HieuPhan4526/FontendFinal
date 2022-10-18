@@ -19,7 +19,6 @@ export default function Header(props) {
   let { listWork, workNameValue, listMenuTypeWork } = useSelector(
     (rootReducer) => rootReducer.WorkReducer
   );
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
@@ -34,8 +33,64 @@ export default function Header(props) {
     return listMenuTypeWork.map((menuWork, index) => {
       return (
         <Fragment key={index}>
-          <li>
-            <a href="#">{menuWork.tenLoaiCongViec}</a>
+          <li style={{ height: "20px" }}>
+            <a
+              onMouseEnter={() => {
+                let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
+                for (let i = 0; i < menuDsChiTiet.length; i++) {
+                  if (i === index) {
+                    menuDsChiTiet[index].classList.add(
+                      `${styleHeader["hiddenMenuDsChiTiet"]}`
+                    );
+                  }
+                }
+              }}
+              href="#"
+            >
+              {menuWork.tenLoaiCongViec}
+            </a>
+            <div
+              className="row mt-3"
+              style={{
+                position: "relative",
+                backgroundColor: "white",
+                listStyle: "none",
+                padding: "20px",
+                boxShadow: "20px 20px 50px 15px grey",
+                opacity: "0",
+                visibility: "hidden",
+              }}
+              onMouseLeave={() => {
+                let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
+                for (let i = 0; i < menuDsChiTiet.length; i++) {
+                  if (i === index) {
+                    menuDsChiTiet[index].classList.toggle(
+                      `${styleHeader["hiddenMenuDsChiTiet"]}`
+                    );
+                  }
+                }
+              }}
+              id="menuDsChiTiet"
+            >
+              {menuWork.dsNhomChiTietLoai.map((dsChiTiet, index) => {
+                return (
+                  <Fragment key={index}>
+                    <div className="col-6 ">
+                      <h6>
+                        {dsChiTiet.tenNhom}
+                        {dsChiTiet.dsChiTietLoai.map((loaiChiTiet, index) => {
+                          return (
+                            <a href="#" className="mt-4" key={index}>
+                              {loaiChiTiet.tenChiTiet}
+                            </a>
+                          );
+                        })}
+                      </h6>
+                    </div>
+                  </Fragment>
+                );
+              })}
+            </div>
           </li>
         </Fragment>
       );
@@ -236,7 +291,7 @@ export default function Header(props) {
             </ul>
           </div>
         </nav>
-        <nav className={`${styleHeader["menuHeader"]}`}>
+        <nav className={`${styleHeader["menuHeader"]}  container`}>
           <hr />
           <ul>{renderListMenuTypeWork()}</ul>
           <hr />
