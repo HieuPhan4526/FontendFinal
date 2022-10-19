@@ -20,6 +20,7 @@ export const getWorkByNameAction = (tenCongViec) => {
         try {
             if (tenCongViec !== "") {
                 let result = await administrativeJob.getWorkByNameService(tenCongViec);
+                console.log(result);
                 dispatch({
                     type: SET_WORK_BY_NAME,
                     tenCongViec: result.data.content

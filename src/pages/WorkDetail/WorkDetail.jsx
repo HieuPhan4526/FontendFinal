@@ -1,21 +1,75 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styleWorkDetail from "../../assets/css/styleWorkDetail.module.css";
-import {
-  getDetailTypeWorkAction,
-  getMenuTypeWork,
-  getWorkByNameAction,
-} from "../../redux/Actions/WorkAction.";
-import { MA_CHI_TIET_LOAI } from "../../redux/Types/WorkType";
+import { getListWorkAction } from "../../redux/Actions/WorkAction.";
+import { Rate } from "antd";
+
 export default function WorkDetail(props) {
   let { maChiTietLoaiCongViec, tenCongViec } = props.match.params;
-
+  let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDetailTypeWorkAction(maChiTietLoaiCongViec));
+    dispatch(getListWorkAction());
   }, []);
-  console.log(maChiTietLoaiCongViec);
-
+  console.log(listWork);
+  const renderListWork = () => {
+    return listWork.map((work, index) => {
+      return (
+        <div
+          key={index}
+          style={{
+            width: "100%",
+            position: "relative",
+            backgroundColor: "white",
+            border: "1px solid #e4e5e7",
+            cursor: "pointer",
+          }}
+          className="card"
+        >
+          <img src={work.hinhAnh} className="card-img-top" alt="..." />
+          <div className="card-body">
+            <h6 style={{ display: "flex" }} className="card-title">
+              <img
+                style={{
+                  borderRadius: "50%",
+                  marginRight: "10px",
+                  width: "50px",
+                  height: "50px",
+                }}
+                src="http://sc04.alicdn.com/kf/Hc3e61591078043e09dba7808a6be5d21n.jpg"
+                alt=""
+              />
+              <p className="card-text">{work.tenCongViec}</p>
+            </h6>
+            <div
+              style={{
+                color: "#b5b6ba",
+                fontWeight: "400",
+              }}
+            >
+              <Rate allowHalf defaultValue={work.saoCongViec} />
+              <span className="ml-2">({work.danhGia})</span>
+            </div>
+            <hr />
+            <div className="d-flex justify-content-between align-items-center">
+              <a
+                style={{
+                  color: "red",
+                }}
+                href="#"
+              >
+                <i class="fa-solid fa-heart"></i>
+              </a>
+              <button className="btn btn-outline-success">
+                Starting at
+                <span className="ml-2">{work.giaTien}$</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
   return (
     <div>
       <header className={`${styleWorkDetail["main"]}`}>
@@ -134,33 +188,14 @@ export default function WorkDetail(props) {
         </div>
       </div>
       <div className="container my-5">
-        <div className={`${styleWorkDetail["gird-card"]}`}>
-          <div className="card">
-            <img
-              src="https://picsum.photos/50/50"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">
-                <img
-                  style={{
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                  src="https://picsum.photos/50/50"
-                  alt=""
-                />
-                <span>Người Tạo</span>
-              </h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
+        <div
+          style={{
+            width: "100%",
+          }}
+          className="d-flex"
+        >
+          <div className={`${styleWorkDetail["gird-card"]}`}>
+            {renderListWork()}
           </div>
         </div>
       </div>
