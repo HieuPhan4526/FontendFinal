@@ -235,7 +235,7 @@ export default function Header(props) {
               }}
             >
               <div className={styleHeader["avatar-text"]}>
-                <i class="fa-regular fa-user"></i>
+                <i className="fa-regular fa-user"></i>
               </div>
             </button>
             <div
