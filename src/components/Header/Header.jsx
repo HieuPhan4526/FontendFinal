@@ -277,12 +277,12 @@ export default function Header(props) {
                 data-toggle="dropdown"
                 aria-expanded="false"
                 style={{
-                  backgroundColor: `#${user?user.phone.slice(0, 6):""}`,
+                  backgroundColor: `#${user ? user.phone.slice(0, 6) : ""}`,
                   position: "relative",
                 }}
               >
                 <div className={styleHeader["avatar-text"]}>
-                  {user?user.name.charAt(0):""}
+                  {user ? user.name.charAt(0) : ""}
                 </div>
               </button>
               <div
@@ -328,9 +328,9 @@ export default function Header(props) {
                 }} href="#">
                   Logout
                 </a>
+
               </div>
             </div>
-
           </li>
         </ul>
       );

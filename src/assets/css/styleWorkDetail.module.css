@@ -92,3 +92,27 @@
     text-decoration: none;
     padding: 6px 12px;
 }
+.gird-card{
+    display: grid;
+    margin-top: 16px;
+    min-height: 370px;
+    grid-gap: 12px;
+}
+@media  only screen and (min-width: 600px) {
+    .gird-card{
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 16px;
+    }
+}
+@media  only screen and (min-width: 900px) {
+    .gird-card{
+    grid-template-columns: repeat(3,1fr);
+    }
+}
+@media  only screen and (min-width: 1160px) {
+    .gird-card{
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 32px;
+    }
+}
+
