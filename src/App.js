@@ -11,6 +11,7 @@ import { WorkDetailTemplate } from './templates/WorkDetailTemplate';
 import { CategoriesTemplate } from './templates/CategoriesTemplate';
 import Categories from './pages/Categories/Categories';
 import Register from './pages/Register/Register';
+import Profile from './pages/Profile/Profile';
 
 export const history = createBrowserHistory();
 
@@ -36,6 +37,8 @@ function App() {
 
           <CategoriesTemplate exact path="/register" Component={Register} />
           <CategoriesTemplate exact path="/login" Component={Login} />
+
+          <CategoriesTemplate exact path="/profile" Component={Profile} />
         </Switch>
       </Router>
     </div>

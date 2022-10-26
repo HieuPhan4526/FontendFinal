@@ -23,7 +23,7 @@ export const SignInAction = (values) => {
                 type: SIGN_IN,
                 user: userData.user
             })
-            history.push("/home")
+            history.push("/profile")
         }).catch((error) => {
             alert(error.response.data.content) 
         })
