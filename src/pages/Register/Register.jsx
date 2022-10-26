@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { SignUpAction } from "../../redux/Actions/UserAction";
-import { history } from "../../App";
 import styleRegister from "../../assets/css/LoginRegister.module.css"
 export default function Register() {
   const dispatch = useDispatch();

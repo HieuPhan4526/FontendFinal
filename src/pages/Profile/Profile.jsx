@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import styleProfile from "../../assets/css/styleProfile.module.css"
 
 export default function Profile() {
-    let {user} = useSelector((state) => state.UserReducer)
+    let { user } = useSelector((state) => state.UserReducer)
     console.log(user)
     return (
         <div className='container'>
@@ -39,17 +39,44 @@ export default function Profile() {
                         <div>
                             <div className={styleProfile["left-item"]}>
                                 <b>Description</b>
-                                <a href="#">Edit Description</a>
+                                <span onClick={() => {
+                                    let input = document.getElementById("desEdit")
+                                    if (input.style.display === "none") {
+                                        input.style.display = "block"
+                                    } else input.style.display = "none"
+                                }}>Edit Description</span>
                             </div>
-                            <span>fnuwehjfiowejrfiowej</span>
+                            <div className='des-edit' id='desEdit' style={{ display: "none" }}>
+                                <textarea name="Description" id="des" cols="35" rows="3" placeholder='Add Description' defaultValue={"abc"}></textarea>
+                                <span className='btn btn-danger'>Hủy</span>
+                                <span className='btn btn-success ml-3'>đồng ý</span>
+                            </div>
+
+
                             <hr />
                         </div>
                         <div>
                             <div className={styleProfile["left-item"]}>
                                 <b>Language</b>
-                                <a href="#">Add New</a>
+                                <span onClick={() => {
+                                    let input = document.getElementById("langEdit")
+                                    if (input.style.display === "none") {
+                                        input.style.display = "block"
+                                    } else input.style.display = "none"
+                                }}>Add New</span>
                             </div>
-                            <span>fnuwehjfiowejrfiowej</span>
+                            <div className='lang-edit' id='langEdit' style={{ display: "none" }}>
+                                <input type="text" className="form-control my-2" placeholder='Add Language'  />
+                                <select className='custom-select mb-2' name="lang-sel">
+                                    <option selected>Language Level</option>
+                                    <option value="1">Basic</option>
+                                    <option value="2">Convertation</option>
+                                    <option value="3">Fluent</option>
+                                    <option value="4">Navtive / Bilingual</option>
+                                </select>
+                                <span className='btn btn-danger'>Hủy</span>
+                                <span className='btn btn-success ml-3'>đồng ý</span>
+                            </div>
                             <hr />
                         </div>
                         <div>
@@ -57,13 +84,13 @@ export default function Profile() {
                                 <b>Linked Account</b>
                             </div>
                             <ul>
-                                <li>Facebook</li> 
-                                <li>Google</li> 
-                                <li>Gribbble</li> 
-                                <li>Stack Overflow</li> 
-                                <li>GitHub</li> 
-                                <li>Vimeo</li> 
-                                <li>Twitter</li> 
+                                <li>Facebook</li>
+                                <li>Google</li>
+                                <li>Gribbble</li>
+                                <li>Stack Overflow</li>
+                                <li>GitHub</li>
+                                <li>Vimeo</li>
+                                <li>Twitter</li>
                             </ul>
 
 
@@ -72,25 +99,52 @@ export default function Profile() {
                         <div>
                             <div className={styleProfile["left-item"]}>
                                 <b>Skills</b>
-                                <a href="#">Add New</a>
+                                <span onClick={() => {
+                                    let input = document.getElementById("skillEdit")
+                                    if (input.style.display === "none") {
+                                        input.style.display = "block"
+                                    } else input.style.display = "none"
+                                }}>Add New</span>
                             </div>
-                            <span>fnuwehjfiowejrfiowej</span>
+                            <div className='des-edit' id='skillEdit' style={{ display: "none" }}>
+                                <textarea name="Description" id="des" cols="35" rows="3" placeholder='Add Skills' defaultValue={"abc"}></textarea>
+                                <span className='btn btn-danger'>Hủy</span>
+                                <span className='btn btn-success ml-3'>đồng ý</span>
+                            </div>
                             <hr />
                         </div>
                         <div>
                             <div className={styleProfile["left-item"]}>
                                 <b>Education</b>
-                                <a href="#">Add New</a>
+                                <span onClick={() => {
+                                    let input = document.getElementById("eduEdit")
+                                    if (input.style.display === "none") {
+                                        input.style.display = "block"
+                                    } else input.style.display = "none"
+                                }}>Add New</span>
                             </div>
-                            <span>fnuwehjfiowejrfiowej</span>
+                            <div className='des-edit' id='eduEdit' style={{ display: "none" }}>
+                                <textarea name="Description" id="des" cols="35" rows="3" placeholder='Add Skills' defaultValue={"abc"}></textarea>
+                                <span className='btn btn-danger'>Hủy</span>
+                                <span className='btn btn-success ml-3'>đồng ý</span>
+                            </div>
                             <hr />
                         </div>
                         <div>
                             <div className={styleProfile["left-item"]}>
                                 <b>Certification</b>
-                                <a href="#">Add New</a>
+                                <span onClick={() => {
+                                    let input = document.getElementById("cerEdit")
+                                    if (input.style.display === "none") {
+                                        input.style.display = "block"
+                                    } else input.style.display = "none"
+                                }}>Add New</span>
                             </div>
-                            <span>fnuwehjfiowejrfiowej</span>
+                            <div className='des-edit' id='cerEdit' style={{ display: "none" }}>
+                                <textarea name="Description" id="des" cols="35" rows="3" placeholder='Add Skills' defaultValue={"abc"}></textarea>
+                                <span className='btn btn-danger'>Hủy</span>
+                                <span className='btn btn-success ml-3'>đồng ý</span>
+                            </div>
                             <hr />
                         </div>
                     </div>
