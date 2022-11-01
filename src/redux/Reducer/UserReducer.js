@@ -1,7 +1,9 @@
 import { USER_LOGIN } from "../../utils/setting";
 import { SIGN_IN } from "../Types/UserTypes";
 
-let userData = JSON.parse(localStorage.getItem(USER_LOGIN))
+
+let userData = JSON.parse(localStorage.getItem(USER_LOGIN));
+
 const initialState = {
     user: userData ? userData.user : {}
 };
@@ -9,7 +11,7 @@ const initialState = {
 export const UserReducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGN_IN:
-            state.user = action.user
+            state.user = action.user;
             return { ...state };
         default:
             return { ...state };

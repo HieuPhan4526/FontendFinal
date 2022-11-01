@@ -1,3 +1,7 @@
+/* ListWorkDetail */
+
+
+
 .overlayWorkDetail{
     opacity: 1 !important;
     visibility: visible !important;
@@ -98,6 +102,91 @@
     min-height: 370px;
     grid-gap: 12px;
 }
+
+
+
+
+
+/* WorkDetail */
+
+
+/* FAQ */
+.FAQ p{
+  color: #62646a;
+  font-size: 17px;
+  font-weight: 500;  
+  line-height: 40px;
+  cursor: pointer;
+}
+/* Reviews */
+.reviews_right{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: baseline;
+}
+
+.startCouters-content {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.reviews-startCouters button{
+    width: 20%;
+    border: none;
+}
+.startCouters-content>span{
+    width: 20%;
+    color: #446ee7;
+    font-size: 20px;
+}
+.reviews-colRight li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:  #74767e;
+    font-size: 20px;
+    font-weight: 500;
+}
+.commentFooter-Help{
+    color: #404145;
+    font-weight: 600;
+    line-height: 25px;
+    font-size: 14px;
+    margin-right: 12px;
+}
+.commentFooter-icon{
+    cursor: pointer;
+}
+.navbar-responsive{
+    transform: translateX(0%) !important;
+}
+.headerContent-navReponsive{
+    border-bottom: 2px solid white;
+}
+
+
+.headerContent-navReponsive button{
+    border: none;
+    font-size: 30px;
+    width: 60px;
+    height: 50px;
+    line-height: 30px;
+}
+.content-singerOder{
+    border-width: 2px;
+    cursor: default;
+    padding: 19px;
+    background-color: white;
+    color: #404145;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
 @media  only screen and (min-width: 600px) {
     .gird-card{
     grid-template-columns: repeat(2,1fr);

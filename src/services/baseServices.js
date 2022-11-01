@@ -1,6 +1,6 @@
 import axios from "axios";
 import { MA_CHI_TIET_LOAI, WORK_NAME } from "../redux/Types/WorkType";
-import { DOMAIN } from "../utils/setting";
+import { DOMAIN, TOKEN } from "../utils/setting";
 import { TOKEN_CYBER } from "../utils/setting";
 
 
@@ -12,9 +12,6 @@ export class baseServices {
             url: `${DOMAIN}${url}`,
             headers: {
                 "tokenCybersoft": TOKEN_CYBER,
-                'TenCongViec': "",
-                'MaChiTietLoai': "",
-
             },
         });
     };

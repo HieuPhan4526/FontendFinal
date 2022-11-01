@@ -16,11 +16,9 @@ import { history } from "../../../App";
 import { NavLink } from "react-router-dom";
 
 export default function Carousel(props) {
-  let { listWorkSearch } = useSelector(
+  let { listWork, listWorkSearch, workNameValue } = useSelector(
     (rootReducer) => rootReducer.WorkReducer
   );
-  let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
-  let { workNameValue } = useSelector((rootReducer) => rootReducer.WorkReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
@@ -28,6 +26,7 @@ export default function Carousel(props) {
   useEffect(() => {
     dispatch(getWorkByNameAction(workNameValue));
   }, [workNameValue]);
+  console.log(listWorkSearch);
   const typingTimeoutRef = useRef(null);
 
   const renderListWork = () => {
@@ -41,7 +40,7 @@ export default function Carousel(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
+              to={`/listworkdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -58,7 +57,7 @@ export default function Carousel(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
+              to={`/listworkdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>
@@ -71,21 +70,31 @@ export default function Carousel(props) {
   const handleChange = (event) => {
     let { name, value } = event.target;
     const newWorkName = value;
-    dispatch({
-      type: WORK_NAME,
-      newWorkName: newWorkName,
-    });
+    // dispatch({
+    //   type: WORK_NAME,
+    //   newWorkName: newWorkName,
+    // });
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      dispatch({
+        type: WORK_NAME,
+        newWorkName: newWorkName,
+      });
+    }, 500);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
-  const handleForcus = () => {
+  const handleForcus = (e) => {
     let workBannerInput = document.getElementById("work_banner");
     workBannerInput.classList.toggle("workBanner");
   };
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef);
     }

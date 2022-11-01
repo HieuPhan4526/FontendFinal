@@ -6,11 +6,12 @@ import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
 import { UserTemplate, } from './templates/UserTemplate';
 import Login from './pages/Login/Login';
-import WorkDetail from './pages/WorkDetail/WorkDetail';
 import { WorkDetailTemplate } from './templates/WorkDetailTemplate';
 import { CategoriesTemplate } from './templates/CategoriesTemplate';
 import Categories from './pages/Categories/Categories';
 import Register from './pages/Register/Register';
+import ListWorkDetail from './pages/ListWorkDetail/ListWorkDetail';
+import WorkDetail from './pages/WorkDetail/WorkDetail';
 
 export const history = createBrowserHistory();
 
@@ -21,7 +22,9 @@ function App() {
         <Switch>
           <HomeTemplate exact path="/home" Component={Home} />
 
-          <WorkDetailTemplate exact path="/workdetail/:maChiTietLoaiCongViec/:tenCongViec" Component={WorkDetail} />
+          <CategoriesTemplate exact path="/listworkdetail/:maChiTietLoaiCongViec/:tenCongViec" Component={ListWorkDetail} />
+
+          <WorkDetailTemplate exact path="/workdetail/:maChiTietLoaiCongViec" Component={WorkDetail} />
 
           <HomeTemplate exact path="/" Component={Home} />
 

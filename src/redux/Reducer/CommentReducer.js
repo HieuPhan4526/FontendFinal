@@ -1,5 +1,19 @@
-const initialState = {};
+import { SET_WORK_OF_COMMENT } from "../Types/CommentTypes";
 
-export const CommentReducer = (state = initialState, action) => {
-    return { ...state };
+const stateDefault = {
+    listWorkOfComment: []
+};
+
+export const CommentReducer = (state = stateDefault, action) => {
+    switch (action.type) {
+        case SET_WORK_OF_COMMENT: {
+            state.listWorkOfComment = action.listWorkOfComment;
+            return { ...state };
+        }
+
+        default: {
+            return { ...state };
+
+        }
+    }
 };

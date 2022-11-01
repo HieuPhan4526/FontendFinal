@@ -18,8 +18,11 @@ export class AdministrativeJob extends baseServices {
     getMenuTypeWork = () => {
         return this.get(`/api/cong-viec/lay-menu-loai-cong-viec`);
     };
-    getDetailTypeWork = (maChiTietLoai) => {
-        return this.get(`/api/cong-viec/lay-cong-viec-theo-chi-tiet-loai/${maChiTietLoai}`);
+    getDetailWorkService = (maCongViec) => {
+        return this.get(`/api/cong-viec/lay-cong-viec-chi-tiet/${maCongViec}`);
+    };
+    hireAJobService = (tokenNguoiDung) => {
+        return this.post(`/api/thue-cong-viec`, tokenNguoiDung);
     };
 }
 
