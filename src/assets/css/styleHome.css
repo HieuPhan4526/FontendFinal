@@ -88,6 +88,10 @@
     visibility: inherit !important;
 }
 
+.workBannerHeader{
+    opacity: 1 !important;
+    visibility: inherit !important;
+}
 .listWorkSearch{
     line-height: 35px;
     color: #74767e;

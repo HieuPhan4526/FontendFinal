@@ -1,10 +1,12 @@
-import { SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, TEN_CONG_VIEC, WORK_BY_NAME, WORK_NAME } from "../Types/WorkType";
+import { SET_HIRE_JOB, SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, SET_WORK_DETAIL, TEN_CONG_VIEC, WORK_BY_NAME, WORK_NAME } from "../Types/WorkType";
 
 const stateDefault = {
     listWork: [],
     workNameValue: "",
     listWorkSearch: [],
-    listMenuTypeWork: []
+    listMenuTypeWork: [],
+    workDetail: [],
+
 };
 
 export const WorkReducer = (state = stateDefault, action) => {
@@ -25,6 +27,11 @@ export const WorkReducer = (state = stateDefault, action) => {
             state.listMenuTypeWork = action.listMenuTypeWork;
             return { ...state };
         }
+        case SET_WORK_DETAIL: {
+            state.workDetail = action.workDetail;
+            return { ...state };
+        }
+
         default: {
             return { ...state };
 

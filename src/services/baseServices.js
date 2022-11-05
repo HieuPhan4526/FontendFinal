@@ -1,7 +1,9 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { MA_CHI_TIET_LOAI, WORK_NAME } from "../redux/Types/WorkType";
-import { DOMAIN } from "../utils/setting";
+import { DOMAIN, TOKEN, USER_LOGIN } from "../utils/setting";
 import { TOKEN_CYBER } from "../utils/setting";
+
 
 
 export class baseServices {
@@ -12,9 +14,6 @@ export class baseServices {
             url: `${DOMAIN}${url}`,
             headers: {
                 "tokenCybersoft": TOKEN_CYBER,
-                'TenCongViec': "",
-                'MaChiTietLoai': "",
-
             },
         });
     };
@@ -25,6 +24,7 @@ export class baseServices {
             data: data,
             headers: {
                 "tokenCybersoft": TOKEN_CYBER,
+                "token": localStorage.getItem(TOKEN)
             },
         });
     };

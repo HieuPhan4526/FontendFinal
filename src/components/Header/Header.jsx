@@ -31,8 +31,9 @@ export default function Header(props) {
     return listMenuTypeWork.map((menuWork, index) => {
       return (
         <Fragment key={index}>
-          <li style={{ height: "20px" }}>
+          <li style={{ height: "40px" }}>
             <a
+              style={{ width: "180px" }}
               onMouseEnter={() => {
                 let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
                 for (let i = 0; i < menuDsChiTiet.length; i++) {
@@ -55,6 +56,7 @@ export default function Header(props) {
                 listStyle: "none",
                 padding: "20px",
                 boxShadow: "20px 20px 50px 15px grey",
+                zIndex: 50,
                 opacity: "0",
                 visibility: "hidden",
               }}
@@ -106,7 +108,7 @@ export default function Header(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
+              to={`/listworkdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -123,7 +125,7 @@ export default function Header(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
+              to={`/listworkdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>
@@ -164,7 +166,7 @@ export default function Header(props) {
     }, 100);
   };
   const renderUser = () => {
-    if (!user) {
+    if (!localStorage.getItem(USER_LOGIN)) {
       return (
         <ul className={`navbar-nav`}>
           <li className="nav-item">
@@ -269,6 +271,9 @@ export default function Header(props) {
               ></path>
             </svg>
           </li>
+          <i style={{ color: "white", fontSize: "30px", fontWeight: "600" }}>
+            {user.email}
+          </i>
           <li className={styleHeader["nav-item"]}>
             <div className="dropdown">
               <button
@@ -277,12 +282,12 @@ export default function Header(props) {
                 data-toggle="dropdown"
                 aria-expanded="false"
                 style={{
-                  backgroundColor: `#${user ? user.phone.slice(0, 6) : ""}`,
+                  backgroundColor: "black",
                   position: "relative",
                 }}
               >
                 <div className={styleHeader["avatar-text"]}>
-                  {user ? user.name.charAt(0) : ""}
+                  <i className="fa-regular fa-user"></i>
                 </div>
               </button>
               <div
@@ -319,23 +324,25 @@ export default function Header(props) {
                   Help & Support
                 </a>
                 <hr />
-                <a className="dropdown-item" onClick={() => {
-                  localStorage.removeItem(USER_LOGIN)
-                  localStorage.removeItem("accessToken")
-                  dispatch({
-                    type: SIGN_OUT
-                  })
-                }} href="#">
+                <a
+                  className="dropdown-item"
+                  onClick={() => {
+                    localStorage.removeItem(USER_LOGIN);
+                    localStorage.removeItem("accessToken");
+                    dispatch({
+                      type: SIGN_OUT,
+                    });
+                  }}
+                  href="#"
+                >
                   Logout
                 </a>
-
               </div>
             </div>
           </li>
         </ul>
       );
     }
-
   };
   return (
     <Fragment>

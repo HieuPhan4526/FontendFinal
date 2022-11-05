@@ -87,6 +87,7 @@ export default function SimpleSlick(props) {
                   >
                     <div>
                       <video
+                        id="video"
                         style={{
                           borderRadius: "0",
                           width: "100%",
@@ -147,6 +148,7 @@ export default function SimpleSlick(props) {
                   >
                     <div>
                       <video
+                        id="video"
                         style={{
                           borderRadius: "0",
                           width: "100%",
@@ -205,6 +207,7 @@ export default function SimpleSlick(props) {
                   >
                     <div>
                       <video
+                        id="video"
                         style={{
                           borderRadius: "0",
                           width: "100%",
@@ -264,6 +267,7 @@ export default function SimpleSlick(props) {
                   >
                     <div>
                       <video
+                        id="video"
                         style={{
                           borderRadius: "0",
                           width: "100%",

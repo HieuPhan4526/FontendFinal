@@ -1,26 +1,27 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../../assets/css/styleSwiper.css";
-import { Autoplay, Pagination, Navigation } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getListWorkAction,
-  getWorkByName,
   getWorkByNameAction,
 } from "../../../redux/Actions/WorkAction.";
-import { WORK_BY_NAME, WORK_NAME } from "../../../redux/Types/WorkType";
+import { WORK_NAME } from "../../../redux/Types/WorkType";
 import { history } from "../../../App";
 import { NavLink } from "react-router-dom";
+import { Carousel } from "antd";
+const contentStyle = {
+  height: "600px",
+  textAlign: "center",
+  width: "100%",
+};
 
-export default function Carousel(props) {
-  let { listWorkSearch } = useSelector(
+export default function CarouselHome(props) {
+  let { listWork, listWorkSearch, workNameValue } = useSelector(
     (rootReducer) => rootReducer.WorkReducer
   );
-  let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
-  let { workNameValue } = useSelector((rootReducer) => rootReducer.WorkReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListWorkAction());
@@ -28,6 +29,7 @@ export default function Carousel(props) {
   useEffect(() => {
     dispatch(getWorkByNameAction(workNameValue));
   }, [workNameValue]);
+  console.log(listWorkSearch);
   const typingTimeoutRef = useRef(null);
 
   const renderListWork = () => {
@@ -41,7 +43,7 @@ export default function Carousel(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
+              to={`/listworkdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -58,7 +60,7 @@ export default function Carousel(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/workdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
+              to={`/listworkdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>
@@ -71,21 +73,31 @@ export default function Carousel(props) {
   const handleChange = (event) => {
     let { name, value } = event.target;
     const newWorkName = value;
-    dispatch({
-      type: WORK_NAME,
-      newWorkName: newWorkName,
-    });
+    // dispatch({
+    //   type: WORK_NAME,
+    //   newWorkName: newWorkName,
+    // });
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef);
+    }
+
+    typingTimeoutRef.current = setTimeout(() => {
+      dispatch({
+        type: WORK_NAME,
+        newWorkName: newWorkName,
+      });
+    }, 500);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
-  const handleForcus = () => {
+  const handleForcus = (e) => {
     let workBannerInput = document.getElementById("work_banner");
     workBannerInput.classList.toggle("workBanner");
   };
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef);
     }
@@ -98,48 +110,44 @@ export default function Carousel(props) {
 
   return (
     <Fragment>
-      <div style={{ position: "relative", height: "auto" }}>
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
+      <div style={{ position: "relative" }}>
+        <Carousel dots={false} autoplay effect="fade">
+          <div>
             <img
+              style={contentStyle}
               src="https://fiverr-res.cloudinary.com/image/upload/q_auto,f_auto/v1/attachments/generic_asset/asset/bb5958e41c91bb37f4afe2a318b71599-1599344049977/bg-hero-5-1792-x2.png"
               alt=""
             />
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+          <div>
             <img
+              style={contentStyle}
               src="https://fiverr-res.cloudinary.com/image/upload/q_auto,f_auto/v1/attachments/generic_asset/asset/bb5958e41c91bb37f4afe2a318b71599-1599344049984/bg-hero-1-1792-x2.png"
               alt=""
             />
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+          <div>
             <img
+              style={contentStyle}
               src="https://fiverr-res.cloudinary.com/image/upload/q_auto,f_auto/v1/attachments/generic_asset/asset/2413b8415dda9dbd7756d02cb87cd4b1-1599595203021/bg-hero-2-1792-x2.png"
               alt=""
             />
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+          <div>
             <img
+              style={contentStyle}
               src="https://fiverr-res.cloudinary.com/image/upload/q_auto,f_auto/v1/attachments/generic_asset/asset/d14871e2d118f46db2c18ad882619ea8-1599835783974/bg-hero-3-1792-x2.png"
               alt=""
             />
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+          <div>
             <img
+              style={contentStyle}
               src="https://fiverr-res.cloudinary.com/image/upload/q_auto,f_auto/v1/attachments/generic_asset/asset/93085acc959671e9e9e77f3ca8147f82-1599427734106/bg-hero-4-1792-x2.png"
               alt=""
             />
-          </SwiperSlide>
-        </Swiper>
+          </div>
+        </Carousel>
         <div className="max-width-container">
           <div
             className="reponsive_headerCarousel"

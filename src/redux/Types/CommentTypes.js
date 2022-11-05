@@ -1,0 +1,1 @@
+export const SET_WORK_OF_COMMENT = "SET_WORK_OF_COMMENT"
