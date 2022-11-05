@@ -3,3 +3,5 @@ export const TOKEN_CYBER = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJ
 export const DOMAIN = "https://fiverrnew.cybersoft.edu.vn";
 
 export const USER_LOGIN = "USER_LOGIN";
+
+export const TOKEN = "token";

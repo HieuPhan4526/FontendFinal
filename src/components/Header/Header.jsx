@@ -26,7 +26,6 @@ export default function Header(props) {
   useEffect(() => {
     dispatch(getWorkByNameAction(workNameValue));
   }, [workNameValue]);
-
   const typingTimeoutRef = useRef(null);
   const renderListMenuTypeWork = () => {
     return listMenuTypeWork.map((menuWork, index) => {
@@ -57,6 +56,7 @@ export default function Header(props) {
                 listStyle: "none",
                 padding: "20px",
                 boxShadow: "20px 20px 50px 15px grey",
+                zIndex: 50,
                 opacity: "0",
                 visibility: "hidden",
               }}

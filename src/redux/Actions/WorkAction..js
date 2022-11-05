@@ -1,5 +1,5 @@
 import { administrativeJob } from "../../services/WorkService";
-import { SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, SET_WORK_DETAIL } from "../Types/WorkType";
+import { SET_HIRE_JOB, SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, SET_WORK_DETAIL } from "../Types/WorkType";
 
 export const getListWorkAction = () => {
     return async dispatch => {
@@ -59,11 +59,12 @@ export const getDetailWorkAction = (maCongViec) => {
 
     };
 };
-export const hireAJobAction = (tokenNguoiDung) => {
+export const hireAJobAction = (data) => {
     return async dispatch => {
         try {
-            let result = await administrativeJob.hireAJobService(tokenNguoiDung);
+            let result = await administrativeJob.hireAJobService(data);
             console.log(result);
+            alert(result.data.message);
         } catch (error) {
             console.log(error);
         }

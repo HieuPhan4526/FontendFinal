@@ -18,3 +18,16 @@ export const getWorkOfCommentAction = (maCongViec) => {
 
     };
 };
+export const addCommentAction = (data) => {
+    return async dispatch => {
+        try {
+            let result = await commentService.addCommentService(data);
+            console.log(result);
+            alert(result.data.message);
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    };
+};

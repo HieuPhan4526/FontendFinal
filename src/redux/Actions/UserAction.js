@@ -14,19 +14,17 @@ export const SignUpAction = (values) => {
     };
 };
 export const SignInAction = (values) => {
-    return (dispatch) => {
-        userService.SignIn(values).then((result) => {
-            let userData = result.data.content;
-            console.log(userData);
-            alert("Đăng nhập thành công");
-            localStorage.setItem(USER_LOGIN, JSON.stringify(userData));
+    return async (dispatch) => {
+        try {
+            let result = await userService.SignIn(values);
             dispatch({
                 type: SIGN_IN,
-                user: userData.user
+                userLogin: result.data.content
             });
+            alert("Đăng nhập thành công");
             history.goBack();
-        }).catch((error) => {
-            alert(error.response.data.content);
-        });
+        } catch (error) {
+            console.log(error);
+        }
     };
 };

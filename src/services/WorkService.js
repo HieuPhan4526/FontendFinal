@@ -21,8 +21,8 @@ export class AdministrativeJob extends baseServices {
     getDetailWorkService = (maCongViec) => {
         return this.get(`/api/cong-viec/lay-cong-viec-chi-tiet/${maCongViec}`);
     };
-    hireAJobService = (tokenNguoiDung) => {
-        return this.post(`/api/thue-cong-viec`, tokenNguoiDung);
+    hireAJobService = (data) => {
+        return this.post(`/api/thue-cong-viec`, data);
     };
 }
 

@@ -20,6 +20,13 @@ export default function Home(props) {
   const handleCancel = () => {
     setIsModalOpen1(false);
   };
+  const maxWith = {
+    margin: "0 auto",
+    maxWidth: "1400px",
+    padding: "32px 32px 64px",
+    paddingTop: "0",
+    paddingBottom: "0",
+  };
 
   const settings = {
     infinite: true,
@@ -31,7 +38,7 @@ export default function Home(props) {
     <div>
       <HomeHeader />
       <Carousel />
-      <div className="container">
+      <div style={maxWith}>
         <h1>Popular profesional services</h1>
         <div className="my-5">
           <MultipleSlick />
