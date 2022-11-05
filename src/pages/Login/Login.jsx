@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import React from "react";
-import * as Yup from "yup";
 import { history } from "../../App";
+import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { SignInAction } from "../../redux/Actions/UserAction";
 import styleLogin from "../../assets/css/LoginRegister.module.css";

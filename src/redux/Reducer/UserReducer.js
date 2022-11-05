@@ -1,5 +1,5 @@
 import { TOKEN, USER_LOGIN } from "../../utils/setting";
-import { SIGN_IN } from "../Types/UserTypes";
+import { SIGN_IN, SIGN_OUT } from "../Types/UserTypes";
 
 
 let userLogin = {};
@@ -16,7 +16,9 @@ export const UserReducer = (state = initialState, action) => {
             localStorage.setItem(USER_LOGIN, JSON.stringify(action.userLogin.user));
             localStorage.setItem(TOKEN, action.userLogin.token);
             state.user = action.userLogin;
-            console.log(state);
+            return { ...state };
+        case SIGN_OUT:
+            state.user = null;
             return { ...state };
         default:
             return { ...state };

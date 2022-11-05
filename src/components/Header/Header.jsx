@@ -11,10 +11,10 @@ import {
 } from "../../redux/Actions/WorkAction.";
 import { WORK_NAME } from "../../redux/Types/WorkType";
 import { USER_LOGIN } from "../../utils/setting";
+import { SIGN_OUT } from "../../redux/Types/UserTypes";
 
 export default function Header(props) {
   let { tenCongViec } = props.match.params;
-
   let { listWork, workNameValue, listMenuTypeWork, listWorkSearch } =
     useSelector((rootReducer) => rootReducer.WorkReducer);
   let { user } = useSelector((state) => state.UserReducer);
@@ -166,7 +166,55 @@ export default function Header(props) {
     }, 100);
   };
   const renderUser = () => {
-    if (localStorage.getItem(USER_LOGIN)) {
+    if (!localStorage.getItem(USER_LOGIN)) {
+      return (
+        <ul className={`navbar-nav`}>
+          <li className="nav-item">
+            <a className={`nav-link`} href="#">
+              Fiverr Business
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className={`nav-link`} href="#">
+              Explore
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className={`nav-link`} href="#">
+              <i className="fa-solid fa-earth-asia mr-3"></i>
+              <span>EngLish</span>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className={`nav-link`} href="#">
+              Become a Seller
+            </a>
+          </li>
+
+          <li className="nav-item">
+            <button
+              onClick={() => {
+                history.push("/register");
+              }}
+              className="btn btn-outline-info mr-3"
+              href="#"
+            >
+              Sign in
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              onClick={() => {
+                history.push("/login");
+              }}
+              className="btn btn-outline-info"
+            >
+              Join
+            </button>
+          </li>
+        </ul>
+      );
+    } else {
       return (
         <ul className={`${styleHeader["navbar-ul"]} navbar-nav`}>
           <li className={styleHeader["nav-item"]}>
@@ -227,86 +275,74 @@ export default function Header(props) {
             {user.email}
           </i>
           <li className={styleHeader["nav-item"]}>
-            <div className="dropdown"></div>
-            <button
-              className={`${styleHeader["avatar"]} dropright`}
-              type="button"
-              data-toggle="dropdown"
-              aria-expanded="false"
-              style={{
-                backgroundColor: "black",
-                position: "relative",
-              }}
-            >
-              <div className={styleHeader["avatar-text"]}>
-                <i className="fa-regular fa-user"></i>
+            <div className="dropdown">
+              <button
+                className={`${styleHeader["avatar"]} dropright`}
+                type="button"
+                data-toggle="dropdown"
+                aria-expanded="false"
+                style={{
+                  backgroundColor: "black",
+                  position: "relative",
+                }}
+              >
+                <div className={styleHeader["avatar-text"]}>
+                  <i className="fa-regular fa-user"></i>
+                </div>
+              </button>
+              <div
+                className="dropdown-menu dropdown-menu-right"
+                style={{ position: "absolute" }}
+              >
+                <a className="dropdown-item" href="/profile">
+                  Profile
+                </a>
+                <a className="dropdown-item" href="#">
+                  Manage Request
+                </a>
+                <a className="dropdown-item" href="#">
+                  Refer a Friend
+                </a>
+                <hr />
+                <a className="dropdown-item" href="#">
+                  Become a Seller
+                </a>
+                <a className="dropdown-item" href="#">
+                  Settings
+                </a>
+                <a className="dropdown-item" href="#">
+                  Billing
+                </a>
+                <hr />
+                <a className="dropdown-item" href="#">
+                  English
+                </a>
+                <a className="dropdown-item" href="#">
+                  US$ USD
+                </a>
+                <a className="dropdown-item" href="#">
+                  Help & Support
+                </a>
+                <hr />
+                <a
+                  className="dropdown-item"
+                  onClick={() => {
+                    localStorage.removeItem(USER_LOGIN);
+                    localStorage.removeItem("accessToken");
+                    dispatch({
+                      type: SIGN_OUT,
+                    });
+                  }}
+                  href="#"
+                >
+                  Logout
+                </a>
               </div>
-            </button>
-            <div
-              className="dropdown-menu dropdown-menu-right"
-              style={{ position: "absolute" }}
-            >
-              <a className="dropdown-item" href="#">
-                Action
-              </a>
-              <a className="dropdown-item" href="#">
-                Another action
-              </a>
-              <a className="dropdown-item" href="#">
-                Something else here
-              </a>
             </div>
           </li>
         </ul>
       );
-    } else
-      return (
-        <ul className={`navbar-nav`}>
-          <li className="nav-item">
-            <a className={`nav-link`} href="#">
-              Fiverr Business
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className={`nav-link`} href="#">
-              Explore
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className={`nav-link`} href="#">
-              <i className="fa-solid fa-earth-asia mr-3"></i>
-              <span>EngLish</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className={`nav-link`} href="#">
-              Become a Seller
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <button
-              onClick={() => {
-                history.push("/register");
-              }}
-              className="btn btn-outline-info mr-3"
-              href="#"
-            >
-              Sign in
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              onClick={() => {
-                history.push("/login");
-              }}
-              className="btn btn-outline-info"
-            >
-              Join
-            </button>
-          </li>
-        </ul>
-      );
+    }
   };
   return (
     <Fragment>
