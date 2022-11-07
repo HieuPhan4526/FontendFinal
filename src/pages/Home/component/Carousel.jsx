@@ -43,7 +43,7 @@ export default function CarouselHome(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/listworkdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
+              to={`/listworkdetail/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -60,7 +60,7 @@ export default function CarouselHome(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/listworkdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
+              to={`/listworkdetail/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>

@@ -32,7 +32,7 @@ export default function Header(props) {
       return (
         <Fragment key={index}>
           <li style={{ height: "40px" }}>
-            <a
+            <NavLink
               style={{ width: "180px" }}
               onMouseEnter={() => {
                 let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
@@ -44,10 +44,10 @@ export default function Header(props) {
                   }
                 }
               }}
-              href="#"
+              to={`/categories/${menuWork.tenLoaiCongViec}`}
             >
               {menuWork.tenLoaiCongViec}
-            </a>
+            </NavLink>
             <div
               className="row mt-3"
               style={{
@@ -80,9 +80,13 @@ export default function Header(props) {
                         {dsChiTiet.tenNhom}
                         {dsChiTiet.dsChiTietLoai.map((loaiChiTiet, index) => {
                           return (
-                            <a href="#" className="mt-4" key={index}>
+                            <NavLink
+                              to={`/listworkdetail/${loaiChiTiet.tenChiTiet}`}
+                              className="mt-4"
+                              key={index}
+                            >
                               {loaiChiTiet.tenChiTiet}
-                            </a>
+                            </NavLink>
                           );
                         })}
                       </h6>
@@ -108,7 +112,7 @@ export default function Header(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/listworkdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
+              to={`/listworkdetail/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -125,7 +129,7 @@ export default function Header(props) {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/listworkdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
+              to={`/listworkdetail/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>
@@ -156,10 +160,10 @@ export default function Header(props) {
   const handleBlur = () => {
     let inputSearch = document.querySelector(".overlay");
     inputSearch.classList.remove(`${styleWorkDetail["overlayWorkDetail"]}`);
+
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef);
     }
-
     typingTimeoutRef.current = setTimeout(() => {
       let workBannerInput = document.getElementById("work_banner");
       workBannerInput.classList.remove("workBanner");

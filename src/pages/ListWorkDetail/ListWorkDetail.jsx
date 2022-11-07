@@ -5,7 +5,7 @@ import { getListWorkAction } from "../../redux/Actions/WorkAction.";
 import { Rate } from "antd";
 import { history } from "../../App";
 export default function ListWorkDetail(props) {
-  let { maChiTietLoaiCongViec, tenCongViec } = props.match.params;
+  let { tenCongViec } = props.match.params;
   let { listWork } = useSelector((rootReducer) => rootReducer.WorkReducer);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -13,10 +13,11 @@ export default function ListWorkDetail(props) {
   }, []);
   const renderListWork = () => {
     return listWork.map((work, index) => {
+      console.log(work);
       return (
         <div
           onClick={() => {
-            history.push(`/workdetail/${maChiTietLoaiCongViec}`);
+            history.push(`/workdetail/${work.maChiTietLoaiCongViec}`);
           }}
           key={index}
           style={{

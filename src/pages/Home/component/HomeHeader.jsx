@@ -184,14 +184,48 @@ export default function Header() {
               className="dropdown-menu dropdown-menu-right"
               style={{ position: "absolute" }}
             >
-              <a className="dropdown-item" href="#">
-                Action
+              <a className="dropdown-item" href="/profile">
+                Profile
               </a>
               <a className="dropdown-item" href="#">
-                Another action
+                Manage Request
               </a>
               <a className="dropdown-item" href="#">
-                Something else here
+                Refer a Friend
+              </a>
+              <hr />
+              <a className="dropdown-item" href="#">
+                Become a Seller
+              </a>
+              <a className="dropdown-item" href="#">
+                Settings
+              </a>
+              <a className="dropdown-item" href="#">
+                Billing
+              </a>
+              <hr />
+              <a className="dropdown-item" href="#">
+                English
+              </a>
+              <a className="dropdown-item" href="#">
+                US$ USD
+              </a>
+              <a className="dropdown-item" href="#">
+                Help & Support
+              </a>
+              <hr />
+              <a
+                className="dropdown-item"
+                onClick={() => {
+                  localStorage.removeItem(USER_LOGIN);
+                  localStorage.removeItem("accessToken");
+                  dispatch({
+                    type: SIGN_OUT,
+                  });
+                }}
+                href="#"
+              >
+                Logout
               </a>
             </div>
           </li>

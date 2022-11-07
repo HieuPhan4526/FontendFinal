@@ -23,21 +23,12 @@ function App() {
         <Switch>
           <HomeTemplate exact path="/home" Component={Home} />
 
-          <CategoriesTemplate exact path="/listworkdetail/:maChiTietLoaiCongViec/:tenCongViec" Component={ListWorkDetail} />
+          <WorkDetailTemplate exact path="/listworkdetail/:tenCongViec" Component={ListWorkDetail} />
 
           <WorkDetailTemplate exact path="/workdetail/:maChiTietLoaiCongViec" Component={WorkDetail} />
 
           <HomeTemplate exact path="/" Component={Home} />
-
-          <CategoriesTemplate exact path="/categories/graphics-design" Component={Categories} />
-          <CategoriesTemplate exact path="/categories/digital-marketing" Component={Categories} />
-          <CategoriesTemplate exact path="/categories/writing-translation" Component={Categories} />
-          <CategoriesTemplate exact path="/categories/video-animation" Component={Categories} />
-          <CategoriesTemplate exact path="/categories/music-audio" Component={Categories} />
-          <CategoriesTemplate exact path="/categories/programing-tech" Component={Categories} />
-          <CategoriesTemplate exact path="/categories/business" Component={Categories} />
-          <CategoriesTemplate exact path="/categories/lifestyle" Component={Categories} />
-
+          <CategoriesTemplate exact path="/categories/:tenLoaiCongViec" Component={Categories} />
           <CategoriesTemplate exact path="/register" Component={Register} />
           <CategoriesTemplate exact path="/login" Component={Login} />
 
