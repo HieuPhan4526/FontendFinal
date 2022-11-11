@@ -187,8 +187,7 @@ export default function CarouselHome(props) {
                 listStyle: "none",
                 padding: "20px",
                 boxShadow: "20px 20px 50px 15px grey",
-                opacity: "0",
-                visibility: "hidden",
+                display: "none",
               }}
             >
               {renderListWork()}
@@ -197,7 +196,7 @@ export default function CarouselHome(props) {
             <div className="d-flex mt-3">
               <span className="text-light">Popular: </span>
               <ul
-                className="p-0"
+                className="p-0 listPopular"
                 style={{ listStyle: "none", display: "flex" }}
               >
                 <li className="mx-2">
@@ -222,7 +221,7 @@ export default function CarouselHome(props) {
         </div>
       </div>
       <div style={{ backgroundColor: "#fafafa", marginBottom: "96px" }}>
-        <div className="p-5">
+        <div className="container">
           <div className="d-flex justify-content-center align-items-center">
             <span
               className="font-weight-bold"
@@ -234,7 +233,9 @@ export default function CarouselHome(props) {
             >
               Trusted by:
             </span>
-            <ul style={{ listStyle: "none", display: "flex" }}>
+            <ul
+              style={{ listStyle: "none", display: "flex", flexWrap: "wrap" }}
+            >
               <li>
                 <img
                   src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/facebook.31d5f92.png"

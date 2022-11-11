@@ -78,6 +78,7 @@ export default function WorkDetail(props) {
   });
   const renderWorkDetail = () => {
     return workDetail.map((work, index) => {
+      console.log(work);
       return (
         <Fragment key={index}>
           <div className="col-lg-12 col-xl-8">
@@ -1019,7 +1020,6 @@ export default function WorkDetail(props) {
       );
     });
   };
-
   return (
     <div
       style={{

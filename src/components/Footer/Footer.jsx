@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 export default function Footer() {
   return (
     <Fragment>
-      <div className="d-flex justify-content-between px-5">
+      <div className="d-flex justify-content-between px-5 flex-wrap">
         <div className="reponsive_footer">
           <ul
             style={{
@@ -123,7 +123,7 @@ export default function Footer() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-6">
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center flex-wrap">
               <h3 className="m-0">
                 fiverr
                 <span style={{ fontSize: "15px" }}> &#174;</span>
@@ -134,7 +134,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="col-6">
-            <div className="d-flex align-items-center justify-content-between">
+            <div className="d-flex align-items-center justify-content-between flex-wrap">
               <a href="#">
                 <i className="fa-brands fa-twitter"></i>
               </a>

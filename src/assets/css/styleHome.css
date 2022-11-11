@@ -84,13 +84,11 @@
 }
 
 .workBanner{ 
-    opacity: 1 !important;
-    visibility: inherit !important;
+    display: block !important;
 }
 
 .workBannerHeader{
-    opacity: 1 !important;
-    visibility: inherit !important;
+  display: block !important;
 }
 .listWorkSearch{
     line-height: 35px;
@@ -121,8 +119,20 @@
     }
     .max-width-container{
     padding: 32px 32px 64px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
     }
-   
+    .navbar-collapse{
+        background-color:#F0E68C;
+    }
+    .navbar-collapse ul li a{
+        color: black !important;
+        padding: 20px;
+    }
 }
 @media  only screen and (min-width: 900px) {
     .reponsive_tes{

@@ -73,6 +73,7 @@
     margin: 0 auto;
     padding: 0 32px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 .top-filters{
     display: flex;

@@ -13,7 +13,6 @@ export default function ListWorkDetail(props) {
   }, []);
   const renderListWork = () => {
     return listWork.map((work, index) => {
-      console.log(work);
       return (
         <div
           onClick={() => {
@@ -85,7 +84,7 @@ export default function ListWorkDetail(props) {
     });
   };
   return (
-    <div>
+    <div className="container">
       <header className={`${styleWorkDetail["main"]}`}>
         <nav className={`${styleWorkDetail["main-content"]}`}>
           <b>Suggested</b>

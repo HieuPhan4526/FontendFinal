@@ -9,10 +9,10 @@ export const WorkDetailTemplate = (props) => {
 
 
     return <Route  {...props} render={(propsRoute) => {
-        return <Fragment>
+        return <div className="container-fluid">
             <Header {...propsRoute} />
             <props.Component {...propsRoute} />
             <Footer />
-        </Fragment>;
+        </div>;
     }} />;
 };

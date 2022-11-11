@@ -17,6 +17,7 @@
     margin: 0 auto;
     max-width: 1400px;
     padding: 0;
+    flex-wrap: wrap;
 }
 
 .menuHeader a {
@@ -35,8 +36,7 @@
     font-weight: 400;
 }
 .hiddenMenuDsChiTiet{
-    opacity: 1 !important;
-    visibility: inherit !important;
+  display: block !important;
 }
 
 .navbar-ul {

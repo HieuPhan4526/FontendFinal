@@ -9,7 +9,8 @@ import {
   getWorkByNameAction,
 } from "../../../redux/Actions/WorkAction.";
 import { WORK_NAME } from "../../../redux/Types/WorkType";
-import { USER_LOGIN } from "../../../utils/setting";
+import { TOKEN, USER_LOGIN } from "../../../utils/setting";
+import { SIGN_OUT } from "../../../redux/Types/UserTypes";
 export default function Header() {
   let { listWork, workNameValue, listWorkSearch } = useSelector(
     (rootReducer) => rootReducer.WorkReducer
@@ -43,7 +44,7 @@ export default function Header() {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/listworkdetail/${workSearch.congViec.maChiTietLoaiCongViec}/${workSearch.congViec.tenCongViec}`}
+              to={`/listworkdetail/${workSearch.congViec.tenCongViec}`}
             >
               {workSearch.congViec.tenCongViec}
             </NavLink>
@@ -60,7 +61,7 @@ export default function Header() {
           >
             <NavLink
               className="listWorkSearch"
-              to={`/listworkdetail/${work.maChiTietLoaiCongViec}/${work.tenCongViec}`}
+              to={`/listworkdetail/${work.tenCongViec}`}
             >
               {work.tenCongViec}
             </NavLink>
@@ -218,7 +219,7 @@ export default function Header() {
                 className="dropdown-item"
                 onClick={() => {
                   localStorage.removeItem(USER_LOGIN);
-                  localStorage.removeItem("accessToken");
+                  localStorage.removeItem(TOKEN);
                   dispatch({
                     type: SIGN_OUT,
                   });
@@ -361,9 +362,8 @@ export default function Header() {
                 listStyle: "none",
                 padding: "20px",
                 boxShadow: "20px 20px 50px 15px grey",
-                opacity: "0",
-                maxHeight: "500px",
-                visibility: "hidden",
+                height: "auto",
+                display: "none",
               }}
             >
               {renderListWork()}

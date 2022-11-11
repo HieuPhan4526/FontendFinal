@@ -10,7 +10,7 @@ import {
   getWorkByNameAction,
 } from "../../redux/Actions/WorkAction.";
 import { WORK_NAME } from "../../redux/Types/WorkType";
-import { USER_LOGIN } from "../../utils/setting";
+import { TOKEN, USER_LOGIN } from "../../utils/setting";
 import { SIGN_OUT } from "../../redux/Types/UserTypes";
 
 export default function Header(props) {
@@ -49,7 +49,6 @@ export default function Header(props) {
               {menuWork.tenLoaiCongViec}
             </NavLink>
             <div
-              className="row mt-3"
               style={{
                 position: "relative",
                 backgroundColor: "white",
@@ -57,8 +56,8 @@ export default function Header(props) {
                 padding: "20px",
                 boxShadow: "20px 20px 50px 15px grey",
                 zIndex: 50,
-                opacity: "0",
-                visibility: "hidden",
+                display: "none",
+                marginTop: 20,
               }}
               onMouseLeave={() => {
                 let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
@@ -74,24 +73,29 @@ export default function Header(props) {
             >
               {menuWork.dsNhomChiTietLoai.map((dsChiTiet, index) => {
                 return (
-                  <Fragment key={index}>
-                    <div className="col-6 ">
-                      <h6>
-                        {dsChiTiet.tenNhom}
-                        {dsChiTiet.dsChiTietLoai.map((loaiChiTiet, index) => {
-                          return (
-                            <NavLink
-                              to={`/listworkdetail/${loaiChiTiet.tenChiTiet}`}
-                              className="mt-4"
-                              key={index}
-                            >
-                              {loaiChiTiet.tenChiTiet}
-                            </NavLink>
-                          );
-                        })}
-                      </h6>
+                  <div key={index}>
+                    <div>
+                      <h5>{dsChiTiet.tenNhom}</h5>
+                      {dsChiTiet.dsChiTietLoai.map((loaiChiTiet, index) => {
+                        return (
+                          <p
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              history.push(
+                                `/listworkdetail/${loaiChiTiet.tenChiTiet}`
+                              );
+                            }}
+                            className="mt-4"
+                            key={index}
+                          >
+                            {loaiChiTiet.tenChiTiet}
+                          </p>
+                        );
+                      })}
                     </div>
-                  </Fragment>
+                  </div>
                 );
               })}
             </div>
@@ -332,7 +336,7 @@ export default function Header(props) {
                   className="dropdown-item"
                   onClick={() => {
                     localStorage.removeItem(USER_LOGIN);
-                    localStorage.removeItem("accessToken");
+                    localStorage.removeItem(TOKEN);
                     dispatch({
                       type: SIGN_OUT,
                     });
@@ -366,7 +370,7 @@ export default function Header(props) {
           style={{
             zIndex: "5",
           }}
-          className="navbar navbar-expand-lg navbar-dark bg-dark px-5 align-items-baseline"
+          className="navbar navbar-expand-lg navbar-dark bg-dark px-5 align-items-baseline "
         >
           <NavLink
             className={`navbar-brand ${styleHeader["logo"]} mr-5`}
@@ -419,8 +423,7 @@ export default function Header(props) {
                   listStyle: "none",
                   padding: "20px",
                   boxShadow: "20px 20px 50px 15px grey",
-                  opacity: "0",
-                  visibility: "hidden",
+                  display: "none",
                 }}
               >
                 {renderListWork()}
