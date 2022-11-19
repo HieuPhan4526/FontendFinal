@@ -4,7 +4,6 @@ import { Router, Switch } from 'react-router-dom';
 
 import { HomeTemplate } from './templates/HomeTemplate';
 import Home from './pages/Home/Home';
-import { UserTemplate, } from './templates/UserTemplate';
 import Login from './pages/Login/Login';
 import { WorkDetailTemplate } from './templates/WorkDetailTemplate';
 import { CategoriesTemplate } from './templates/CategoriesTemplate';
@@ -13,6 +12,8 @@ import Register from './pages/Register/Register';
 import ListWorkDetail from './pages/ListWorkDetail/ListWorkDetail';
 import WorkDetail from './pages/WorkDetail/WorkDetail';
 import Profile from './pages/Profile/Profile';
+import UserDashboardTemplate from './templates/UserDashboardTemplate';
+import UserDashboard from './pages/UserDashboard/UserDashboard';
 
 export const history = createBrowserHistory();
 
@@ -33,6 +34,8 @@ function App() {
           <CategoriesTemplate exact path="/login" Component={Login} />
 
           <CategoriesTemplate exact path="/profile" Component={Profile} />
+
+          <UserDashboardTemplate exact path="/userdashboard" Component={UserDashboard} />
         </Switch>
       </Router>
     </div>

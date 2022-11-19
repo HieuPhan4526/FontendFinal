@@ -126,9 +126,6 @@
     right: 0;
     z-index: 2;
     }
-    .navbar-collapse{
-        background-color:#F0E68C;
-    }
     .navbar-collapse ul li a{
         color: black !important;
         padding: 20px;

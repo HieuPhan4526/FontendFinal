@@ -28,4 +28,25 @@ export class baseServices {
             },
         });
     };
+    put = (url, data) => {
+        return axios({
+            method: "PUT",
+            url: `${DOMAIN}${url}`,
+            data: data,
+            headers: {
+                "tokenCybersoft": TOKEN_CYBER,
+                "token": localStorage.getItem(TOKEN)
+            },
+        });
+    }
+    delete = (url) => {
+        return axios({
+            method: "DELETE",
+            url: `${DOMAIN}${url}`,
+            headers: {
+                "tokenCybersoft": TOKEN_CYBER,
+                "token": localStorage.getItem(TOKEN)
+            },
+        });
+    }
 }
