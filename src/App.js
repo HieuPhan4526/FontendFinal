@@ -14,6 +14,8 @@ import WorkDetail from './pages/WorkDetail/WorkDetail';
 import Profile from './pages/Profile/Profile';
 import UserDashboardTemplate from './templates/UserDashboardTemplate';
 import UserDashboard from './pages/UserDashboard/UserDashboard';
+import WorkDashboard from './pages/WorkDashboard/WorkDashboard';
+import TypeOfWorkDashboard from './pages/TypeOfWorkDashboard/TypeOfWorkDashboard';
 
 export const history = createBrowserHistory();
 
@@ -35,7 +37,9 @@ function App() {
 
           <CategoriesTemplate exact path="/profile" Component={Profile} />
 
-          <UserDashboardTemplate exact path="/userdashboard" Component={UserDashboard} />
+          <UserDashboardTemplate exact path="/dashboard/users" Component={UserDashboard} />
+          <UserDashboardTemplate exact path="/dashboard/works" Component={WorkDashboard} />
+          <UserDashboardTemplate exact path="/dashboard/workstype" Component={TypeOfWorkDashboard} />
         </Switch>
       </Router>
     </div>

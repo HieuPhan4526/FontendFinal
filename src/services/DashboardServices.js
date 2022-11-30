@@ -17,5 +17,8 @@ export class DashboardServices extends baseServices {
   deleteUser = (id) => {
     return this.delete(`/api/users?id=${id}`)
   }
+  searchUserName = (name) => {
+    return this.get(`/api/users/search/${name}`)
+  }
 }
 export const dashboardServices = new DashboardServices()

@@ -8,10 +8,16 @@
 }
 .form{
     background-color: aliceblue;
-    width: 70%;
-    height: 80%;
+    width: 75%;
+    height: 85%;
     position: absolute;
-    top: 15%;
+    top: 10%;
     left: 15%;
     padding: 50px;
+}
+.thead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
 }
