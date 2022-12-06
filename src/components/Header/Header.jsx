@@ -358,8 +358,6 @@ export default function Header(props) {
         style={{
           backgroundColor: "rgba(0,0,0,0.5)",
           position: "fixed",
-          width: "100%",
-          height: "100%",
           opacity: "0",
           visibility: "hidden",
         }}
@@ -370,66 +368,68 @@ export default function Header(props) {
           style={{
             zIndex: "5",
           }}
-          className="navbar navbar-expand-lg navbar-dark bg-dark px-5 align-items-baseline "
+          className="navbar navbar-expand-lg navbar-dark bg-dark px-5 align-items-baseline"
         >
-          <NavLink
-            className={`navbar-brand ${styleHeader["logo"]} mr-5`}
-            to="/home"
-          >
-            Fiiverr.
-          </NavLink>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div
-            className={`collapse navbar-collapse justify-content-between`}
-            id="navbarSupportedContent"
-          >
-            <div
-              style={{
-                width: "45%",
-              }}
+          <div className="container">
+            <NavLink
+              className={`navbar-brand ${styleHeader["logo"]} mr-5`}
+              to="/home"
             >
-              <form onSubmit={handleSubmit} className="d-flex">
-                <input
-                  className="form-control mr-sm-2"
-                  type="search"
-                  placeholder={tenCongViec}
-                  aria-label="Search"
-                  onFocus={handleForcus}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-outline-success my-2 my-sm-0"
-                  type="submit"
-                >
-                  Search
-                </button>
-              </form>
-              <ul
-                id="work_banner"
+              Fiiverr.
+            </NavLink>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div
+              className={`collapse navbar-collapse justify-content-between`}
+              id="navbarSupportedContent"
+            >
+              <div
                 style={{
-                  position: "absolute",
-                  backgroundColor: "white",
-                  listStyle: "none",
-                  padding: "20px",
-                  boxShadow: "20px 20px 50px 15px grey",
-                  display: "none",
+                  width: "45%",
                 }}
               >
-                {renderListWork()}
-              </ul>
+                <form onSubmit={handleSubmit} className="d-flex">
+                  <input
+                    className="form-control mr-sm-2"
+                    type="search"
+                    placeholder={tenCongViec}
+                    aria-label="Search"
+                    onFocus={handleForcus}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                  />
+                  <button
+                    className="btn btn-outline-success my-2 my-sm-0"
+                    type="submit"
+                  >
+                    Search
+                  </button>
+                </form>
+                <ul
+                  id="work_banner"
+                  style={{
+                    position: "absolute",
+                    backgroundColor: "white",
+                    listStyle: "none",
+                    padding: "20px",
+                    boxShadow: "20px 20px 50px 15px grey",
+                    display: "none",
+                  }}
+                >
+                  {renderListWork()}
+                </ul>
+              </div>
+              {renderUser()}
             </div>
-            {renderUser()}
           </div>
         </nav>
         <nav className={`${styleHeader["menuHeader"]}  container`}>

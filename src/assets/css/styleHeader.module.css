@@ -7,6 +7,8 @@
     background-color: white;
     padding: 0 32px;
     margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .menuHeader ul {
@@ -17,7 +19,7 @@
     margin: 0 auto;
     max-width: 1400px;
     padding: 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .menuHeader a {

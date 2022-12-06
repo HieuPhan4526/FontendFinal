@@ -34,6 +34,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   });
   const renderListWork = () => {
+    console.log(listWork)
     if (workNameValue.trim() !== "") {
       return listWorkSearch.map((workSearch, index) => {
         return (
@@ -296,9 +297,8 @@ export default function Header() {
   };
   return (
     <div
-      className={`${styleHeader["header"]} ${
-        sticky ? `${styleHeader["sticky"]}` : ""
-      }`}
+      className={`${styleHeader["header"]} ${sticky ? `${styleHeader["sticky"]}` : ""
+        }`}
     >
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent px-5 align-items-baseline">
         <NavLink
@@ -306,9 +306,8 @@ export default function Header() {
             fontSize: "30px",
             fontWeight: "900",
           }}
-          className={`navbar-brand ${
-            sticky ? `${styleHeader["sticky"]}` : ""
-          } mr-5`}
+          className={`navbar-brand ${sticky ? `${styleHeader["sticky"]}` : ""
+            } mr-5`}
           to="/home"
         >
           Fiiverr.

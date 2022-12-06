@@ -164,7 +164,7 @@ export default function UserDashboard() {
     getUser();
   }, [])
   return (
-    <div>
+    <div className='container'>
       <div className={formCollapse.thead}>
         <Button onClick={() => {
           form.setFieldsValue({

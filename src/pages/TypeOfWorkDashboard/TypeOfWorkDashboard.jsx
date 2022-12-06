@@ -90,7 +90,7 @@ export default function TypeOfWorkDashboard() {
         getList();
       }, [])
     return (
-        <div>
+        <div className='container'>
             <div className={formCollapse.thead}>
                 <Button onClick={() => {
                     form.setFieldsValue({
