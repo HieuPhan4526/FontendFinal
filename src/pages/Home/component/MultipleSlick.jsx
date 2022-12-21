@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+
 const settings = {
   infinite: true,
   speed: 500,
@@ -34,17 +35,24 @@ export default function MultipleSlick() {
   return (
     <div>
       <Slider {...settings}>
-        <div>
-          <div style={{ position: "absolute" }} className="p-2 text-light">
-            <span>Build your brand</span>
-            <h3 className="text-light">Logo Design</h3>
-          </div>
+        <div className="multipleSlick-content">
           <img
-            width={200}
-            height={300}
+            className="multipleSlick-img"
             src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"
             alt=""
           />
+          <div className="multipleSlick-overlay"></div>
+          {/* <div style={{ position: "absolute" }} className="p-2 text-light">
+            <span>Build your brand</span>
+            <h3 className="text-light">Logo Design</h3>
+          </div>
+          <div style={{ width: "200px", height: "300px" }}>
+            <img
+              style={{ width: "100%", height: "100%" }}
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"
+              alt=""
+            />
+          </div> */}
         </div>
         <div>
           <div style={{ position: "absolute" }} className="p-2 text-light">

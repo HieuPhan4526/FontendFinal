@@ -29,7 +29,6 @@ export default function CarouselHome(props) {
   useEffect(() => {
     dispatch(getWorkByNameAction(workNameValue));
   }, [workNameValue]);
-  console.log(listWorkSearch);
   const typingTimeoutRef = useRef(null);
 
   const renderListWork = () => {

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-
+import styleFooter from "./footerCss.module.css";
 export default function Footer() {
   return (
     <Fragment>
@@ -120,9 +120,9 @@ export default function Footer() {
         </div>
       </div>
       <hr />
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
-          <div className="col-6">
+          <div className="col-12 col-lg-6">
             <div className="d-flex align-items-center flex-wrap">
               <h3 className="m-0">
                 fiverr
@@ -133,8 +133,8 @@ export default function Footer() {
               </span>
             </div>
           </div>
-          <div className="col-6">
-            <div className="d-flex align-items-center justify-content-between flex-wrap">
+          <div className="col-12 col-lg-6">
+            <div className={`${styleFooter["footer-icon"]}`}>
               <a href="#">
                 <i className="fa-brands fa-twitter"></i>
               </a>

@@ -2,6 +2,9 @@
 .slick-next:before {
     color: black !important;
 }
+.slick-prev {
+    left: -35px !important;
+}
 
 
 .section{
@@ -25,14 +28,57 @@
     width: 100%;
     height: 100%;
 }
+/* MultipleSlick */
+.multipleSlick-content{
+    position: relative;
+    width: 200px !important;
+    overflow: hidden;
+}
+.multipleSlick-img{
+  width: 200px;
+  height: 300px;
+}
+.multipleSlick-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.multipleSlick-content:hover .multipleSlick-overlay{
+    opacity: 1;
+}
+.multipleSlick-overlay::before{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    display: block;
+    background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100% );
+    transform: skew(-25deg);
+    transition: all 0.75s;
+}
+.multipleSlick-overlay:hover::before{
+    left: 150%
+}
+
+
+/* Explore-list */
 .Explore-list{
     list-style: none;
-    flex-wrap: wrap;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: auto auto auto;
 }
 .Explore-list li {
-    width: 50%;
     padding: 0 10px 32px;
     text-align: center;
+    border-radius: 5px;
 }
 .Explore-list li>a img{
     display: block;
@@ -47,23 +93,42 @@
     display: inline-block
 }
 
+.Explore-list li:hover{
+    position: relative;
+    animation: myMove 1s;
+    background-image: linear-gradient(to right,#f55f8d 0,#f8ae56 51%,#f55f8d 100%);
+    background-size: 200%;
+    box-shadow: 5px 10px 8px #888888;
+    color: white;
+}
 
-
-.iconPlay::after{
-    content: "";
-    display: inline-block;
-    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/desktop-play-button.c1196d6.png) no-repeat;
-    background-size: 80px;
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    z-index: 0;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+/* freelance-talent */
+.freelance-talent-content{
+    position: relative;
     cursor: pointer;
-    
+}
+.freelance-talent-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.freelance-talent-icon{
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    opacity: 0.5;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.freelance-talent-content:hover .freelance-talent-icon{
+    opacity: 1;
 }
 .textContentSimple{
     color: #74767e;
@@ -100,16 +165,9 @@
 }
 
 
-
-
 @media  only screen and (min-width: 600px) {
     .textContentSimple h5{
       font-size: 20px;
-    }
-    .Explore-list li {
-        width: 33.33%;
-        padding-bottom: 55px;
-
     }
     .reponsive_footer{
         display: block;
@@ -142,9 +200,6 @@
         border-left: 1px solid #c5c6c9;
         height: 36px;
         margin-left: 16px;
-    }
-    .Explore-list li {
-        width: 20%;
     }
     .reponsive_headerCarousel{
         max-width: 560px;
@@ -183,3 +238,11 @@
     }
 }
 
+@keyframes myMove {
+    0%{
+      bottom: 0px;
+    }
+    100%{
+      bottom: 30px;
+    }
+  }

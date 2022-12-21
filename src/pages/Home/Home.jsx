@@ -6,9 +6,23 @@ import "../../assets/css/styleHome.css";
 import SimpleSlick from "./component/SimpleSlick";
 import { Button, Modal } from "antd";
 import HomeHeader from "./component/HomeHeader";
+import { useDispatch } from "react-redux";
+import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
+import Loadding from "../../components/Loadding/Loadding";
 
 export default function Home(props) {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: SHOW_LOADING,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
+  }, []);
   const showModal = () => {
     setIsModalOpen1(true);
   };
@@ -96,17 +110,19 @@ export default function Home(props) {
               </ul>
             </div>
             <div className="col-md-12 col-xl-6">
-              <div
-                onClick={() => {
-                  showModal();
-                }}
-                className="iconPlay"
-              >
+              <div onClick={showModal} className="freelance-talent-content">
                 <img
                   className="video"
                   src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_700,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png"
                   alt=""
                 />
+                <div className="freelance-talent-overlay">
+                  <img
+                    className="freelance-talent-icon"
+                    src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-play-icon-png-image_924817.jpg"
+                    alt=""
+                  />
+                </div>
               </div>
               <Modal
                 open={isModalOpen1}
@@ -134,8 +150,8 @@ export default function Home(props) {
       </div>
       <SimpleSlick />
       <div className="Explore section">
-        <h2 className="mb-5">Explore the marketplace</h2>
-        <ul className="Explore-list d-flex">
+        <h2 className="mb-5 text-center">Explore the marketplace</h2>
+        <ul className="Explore-list">
           <li>
             <a href="/categories/graphics-design?source=hplo_cat_sec&pos=1">
               <img
@@ -228,6 +244,7 @@ export default function Home(props) {
           </li>
         </ul>
       </div>
+      <Loadding />
     </div>
   );
 }
