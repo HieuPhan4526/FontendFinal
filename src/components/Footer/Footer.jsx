@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 import styleFooter from "./footerCss.module.css";
 export default function Footer() {
   return (
-    <Fragment>
-      <div className="d-flex justify-content-between px-5 flex-wrap">
+    <div className="container">
+      <div className="footer">
         <div className="reponsive_footer">
           <ul
             style={{
@@ -120,15 +120,19 @@ export default function Footer() {
         </div>
       </div>
       <hr />
-      <div className="container">
+
+      <div className="footerContact">
         <div className="row">
-          <div className="col-12 col-lg-6">
-            <div className="d-flex align-items-center flex-wrap">
+          <div className="footerContact-left col-12 col-lg-6">
+            <div className="footerContact-leftContent">
               <h3 className="m-0">
                 fiverr
                 <span style={{ fontSize: "15px" }}> &#174;</span>
               </h3>
-              <span className="ml-5" style={{ color: "rgba(0,0,0,0.4)" }}>
+              <span
+                className="footerContact-leftText ml-5"
+                style={{ color: "rgba(0,0,0,0.4)" }}
+              >
                 &#169; Fiverr International Ltd. 2021
               </span>
             </div>
@@ -162,7 +166,33 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        <div className="footer-content row text-center">
+          <div className="col-sm-12 col-md-6">
+            <h5>Website Build by Team:</h5>
+            <ul>
+              <li>
+                <a target={`_blank`} href="https://github.com/BinFlex97">
+                  Đinh Quang Khánh
+                </a>{" "}
+              </li>
+              <li>
+                <a target={`_blank`} href="https://github.com/HieuPhan4526">
+                  Phan Minh Hiếu
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-sm-12 col-md-6">
+            <h5>Link source github :</h5>
+            <a
+              target={`_blank`}
+              href="https://github.com/HieuPhan4526/FontendFinal/tree/main"
+            >
+              https://github.com/HieuPhan4526/FontendFinal/tree/main
+            </a>
+          </div>
+        </div>
       </div>
-    </Fragment>
+    </div>
   );
 }

@@ -16,26 +16,60 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    max-width: 1400px;
-    padding: 0;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .menuHeader a {
-    color: #62646a;
+    color: #62646a !important;
     display: inline-block;
     font-size: 16px;
     position: relative;
     text-decoration: none;
+    transition: all 0.5s;
 }
 .menuHeader a:hover{
-    color: red;
+    color: #1dbf73 !important;
 }
+.menuHeader a::after{
+    content: "";
+    position: absolute;
+    top: 26px;
+    width: 0%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #1dbf73;
+    transition: all 0.5s;
+}
+ .menuHeader a:hover::after{
+    width: 100%;
+}
+
+
 
 .menuHeader p {
     color: #74767e;
     font-weight: 400;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.menuHeader p:hover{
+    color: #1dbf73;
+}
+.menuHeader p::after{
+    content: "";
+    position: absolute;
+    top: 26px;
+    width: 0%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #1dbf73;
+    transition: all 0.5s;
+}
+ .menuHeader p:hover::after{
+    width: 100%;
 }
 .hiddenMenuDsChiTiet{
   display: block !important;
@@ -93,4 +127,16 @@
     font-size: 49%;
     text-transform: uppercase;
     font-weight: 600;
+}
+
+@keyframes menuHeaderMove {
+    0%{
+        width: 0;
+    }
+    50%{
+        width: 50%;
+    }
+    100%{
+        width: 100%;
+    }
 }

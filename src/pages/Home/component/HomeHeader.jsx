@@ -37,34 +37,30 @@ export default function Header() {
     if (workNameValue.trim() !== "") {
       return listWorkSearch.map((workSearch, index) => {
         return (
-          <li
-            className="font-weight-bold"
-            style={{ lineHeight: "35px" }}
-            key={index}
-          >
+          <li className="font-weight-bold" key={index}>
+            <hr />
             <NavLink
               className="listWorkSearch"
               to={`/listworkdetail/${workSearch.congViec.tenCongViec}`}
             >
-              {workSearch.congViec.tenCongViec}
+              <p>{workSearch.congViec.tenCongViec}</p>
             </NavLink>
+            <hr />
           </li>
         );
       });
     } else {
       return listWork?.map((work, index) => {
         return (
-          <li
-            className="font-weight-bold"
-            style={{ lineHeight: "35px" }}
-            key={index}
-          >
+          <li className="font-weight-bold" key={index}>
+            <hr />
             <NavLink
               className="listWorkSearch"
               to={`/listworkdetail/${work.tenCongViec}`}
             >
-              {work.tenCongViec}
+              <p>{work.tenCongViec}</p>
             </NavLink>
+            <hr />
           </li>
         );
       });
@@ -90,7 +86,6 @@ export default function Header() {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef);
     }
-
     typingTimeoutRef.current = setTimeout(() => {
       let workBannerInput = document.getElementById("work_bannerHeader");
       workBannerInput.classList.remove("workBannerHeader");
@@ -155,12 +150,13 @@ export default function Header() {
             </svg>
           </li>
           <i
-            className={` ${sticky ? `${styleHeader["sticky"]}` : ""}`}
+            className={`email-user ${
+              sticky ? `${styleHeader["sticky-user"]}` : ""
+            }`}
             style={{
               color: "white",
               fontSize: "30px",
               fontWeight: "600",
-              backgroundColor: "transparent",
             }}
           >
             {user.email}
@@ -237,7 +233,9 @@ export default function Header() {
         <ul className={`navbar-nav ${styleHeader["nav_active"]}`}>
           <li className="nav-item">
             <a
-              className={`nav-link ${sticky ? `${styleHeader["sticky"]}` : ""}`}
+              className={`nav-link ${
+                sticky ? `${styleHeader["sticky-text"]}` : ""
+              }`}
               href="#"
             >
               Fiverr Business
@@ -245,7 +243,9 @@ export default function Header() {
           </li>
           <li className="nav-item">
             <a
-              className={`nav-link ${sticky ? `${styleHeader["sticky"]}` : ""}`}
+              className={`nav-link ${
+                sticky ? `${styleHeader["sticky-text"]}` : ""
+              }`}
               href="#"
             >
               Explore
@@ -253,7 +253,9 @@ export default function Header() {
           </li>
           <li className="nav-item">
             <a
-              className={`nav-link ${sticky ? `${styleHeader["sticky"]}` : ""}`}
+              className={`nav-link ${
+                sticky ? `${styleHeader["sticky-text"]}` : ""
+              }`}
               href="#"
             >
               <i className="fa-solid fa-earth-asia mr-3"></i>
@@ -262,7 +264,9 @@ export default function Header() {
           </li>
           <li className="nav-item">
             <a
-              className={`nav-link ${sticky ? `${styleHeader["sticky"]}` : ""}`}
+              className={`nav-link ${
+                sticky ? `${styleHeader["sticky-text"]}` : ""
+              }`}
               href="#"
             >
               Become a Seller
@@ -279,8 +283,6 @@ export default function Header() {
             >
               Sign up
             </button>
-          </li>
-          <li className="nav-item">
             <button
               onClick={() => {
                 history.push("/login");
@@ -307,7 +309,7 @@ export default function Header() {
             fontWeight: "900",
           }}
           className={`navbar-brand ${
-            sticky ? `${styleHeader["sticky"]}` : ""
+            sticky ? `${styleHeader["sticky-logo"]}` : ""
           } mr-5`}
           to="/home"
         >
@@ -322,21 +324,24 @@ export default function Header() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" />
+          <i className="fa-solid fa-bars" />
         </button>
         <div
           className="collapse navbar-collapse justify-content-between"
           id="navbarSupportedContent"
         >
           <div
-            className={`${sticky ? `${styleHeader["sticky"]}` : ""}`}
+            className={`${sticky ? `${styleHeader["sticky-form"]}` : ""}`}
             style={{
               width: "45%",
               opacity: "0",
               visibility: "hidden",
             }}
           >
-            <form onSubmit={handleSubmit} className="d-flex">
+            <form
+              onSubmit={handleSubmit}
+              className="d-flex align-items-center "
+            >
               <input
                 className="form-control mr-sm-2"
                 type="search"
@@ -364,6 +369,9 @@ export default function Header() {
                 boxShadow: "20px 20px 50px 15px grey",
                 height: "auto",
                 display: "none",
+                zIndex: "99",
+                height: "300px",
+                overflowY: "auto",
               }}
             >
               {renderListWork()}

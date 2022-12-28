@@ -31,43 +31,46 @@ export default function Header(props) {
     return listMenuTypeWork.map((menuWork, index) => {
       return (
         <Fragment key={index}>
-          <li style={{ height: "40px" }}>
-            <NavLink
-              style={{ width: "180px" }}
-              onMouseEnter={() => {
-                let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
-                for (let i = 0; i < menuDsChiTiet.length; i++) {
-                  if (i === index) {
-                    menuDsChiTiet[index].classList.add(
-                      `${styleHeader["hiddenMenuDsChiTiet"]}`
-                    );
-                  }
+          <li
+            className="m-2"
+            onMouseEnter={() => {
+              let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
+              for (let i = 0; i < menuDsChiTiet.length; i++) {
+                if (i === index) {
+                  menuDsChiTiet[index].classList.add(
+                    `${styleHeader["hiddenMenuDsChiTiet"]}`
+                  );
                 }
+              }
+            }}
+            onMouseLeave={() => {
+              let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
+              for (let i = 0; i < menuDsChiTiet.length; i++) {
+                if (i === index) {
+                  menuDsChiTiet[index].classList.toggle(
+                    `${styleHeader["hiddenMenuDsChiTiet"]}`
+                  );
+                }
+              }
+            }}
+          >
+            <a
+              onClick={() => {
+                history.push(`/categories/${menuWork.tenLoaiCongViec}`);
               }}
-              to={`/categories/${menuWork.tenLoaiCongViec}`}
             >
               {menuWork.tenLoaiCongViec}
-            </NavLink>
+            </a>
             <div
               style={{
-                position: "relative",
+                position: "absolute",
                 backgroundColor: "white",
                 listStyle: "none",
+                marginTop: "5px",
                 padding: "20px",
                 boxShadow: "20px 20px 50px 15px grey",
-                zIndex: 50,
+                zIndex: 99,
                 display: "none",
-                marginTop: 20,
-              }}
-              onMouseLeave={() => {
-                let menuDsChiTiet = document.querySelectorAll("#menuDsChiTiet");
-                for (let i = 0; i < menuDsChiTiet.length; i++) {
-                  if (i === index) {
-                    menuDsChiTiet[index].classList.toggle(
-                      `${styleHeader["hiddenMenuDsChiTiet"]}`
-                    );
-                  }
-                }
               }}
               id="menuDsChiTiet"
             >
@@ -79,9 +82,6 @@ export default function Header(props) {
                       {dsChiTiet.dsChiTietLoai.map((loaiChiTiet, index) => {
                         return (
                           <p
-                            style={{
-                              cursor: "pointer",
-                            }}
                             onClick={() => {
                               history.push(
                                 `/listworkdetail/${loaiChiTiet.tenChiTiet}`
@@ -109,34 +109,30 @@ export default function Header(props) {
     if (workNameValue.trim() !== "") {
       return listWorkSearch.map((workSearch, index) => {
         return (
-          <li
-            className="font-weight-bold"
-            style={{ lineHeight: "35px" }}
-            key={index}
-          >
+          <li className="font-weight-bold" key={index}>
+            <hr />
             <NavLink
               className="listWorkSearch"
               to={`/listworkdetail/${workSearch.congViec.tenCongViec}`}
             >
-              {workSearch.congViec.tenCongViec}
+              <p>{workSearch.congViec.tenCongViec}</p>
             </NavLink>
+            <hr />
           </li>
         );
       });
     } else {
       return listWork?.map((work, index) => {
         return (
-          <li
-            className="font-weight-bold"
-            style={{ lineHeight: "35px" }}
-            key={index}
-          >
+          <li className="font-weight-bold" key={index}>
+            <hr />
             <NavLink
               className="listWorkSearch"
               to={`/listworkdetail/${work.tenCongViec}`}
             >
-              {work.tenCongViec}
+              <p>{work.tenCongViec}</p>
             </NavLink>
+            <hr />
           </li>
         );
       });
@@ -150,11 +146,9 @@ export default function Header(props) {
       newWorkName: newWorkName,
     });
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
   const handleForcus = () => {
     let inputSearch = document.querySelector(".overlay");
     inputSearch.classList.toggle(`${styleWorkDetail["overlayWorkDetail"]}`);
@@ -176,7 +170,7 @@ export default function Header(props) {
   const renderUser = () => {
     if (!localStorage.getItem(USER_LOGIN)) {
       return (
-        <ul className={`navbar-nav`}>
+        <ul className={`navbar-nav align-items-center`}>
           <li className="nav-item">
             <a className={`nav-link`} href="#">
               Fiverr Business
@@ -209,8 +203,6 @@ export default function Header(props) {
             >
               Sign in
             </button>
-          </li>
-          <li className="nav-item">
             <button
               onClick={() => {
                 history.push("/login");
@@ -358,6 +350,9 @@ export default function Header(props) {
         style={{
           backgroundColor: "rgba(0,0,0,0.5)",
           position: "fixed",
+          top: "0",
+          width: "100%",
+          height: "100%",
           opacity: "0",
           visibility: "hidden",
         }}
@@ -381,23 +376,26 @@ export default function Header(props) {
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
+              data-target="#navbarSupportedContent1"
+              aria-controls="navbarSupportedContent1"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon" />
+              <i className="fa-solid fa-bars" />
             </button>
             <div
               className={`collapse navbar-collapse justify-content-between`}
-              id="navbarSupportedContent"
+              id="navbarSupportedContent1"
             >
               <div
                 style={{
                   width: "45%",
                 }}
               >
-                <form onSubmit={handleSubmit} className="d-flex">
+                <form
+                  onSubmit={handleSubmit}
+                  className="d-flex align-items-center"
+                >
                   <input
                     className="form-control mr-sm-2"
                     type="search"
@@ -418,11 +416,14 @@ export default function Header(props) {
                   id="work_banner"
                   style={{
                     position: "absolute",
+                    top: "70px",
                     backgroundColor: "white",
                     listStyle: "none",
                     padding: "20px",
                     boxShadow: "20px 20px 50px 15px grey",
                     display: "none",
+                    height: "300px",
+                    overflowY: "auto",
                   }}
                 >
                   {renderListWork()}
@@ -432,7 +433,7 @@ export default function Header(props) {
             </div>
           </div>
         </nav>
-        <nav className={`${styleHeader["menuHeader"]}  container`}>
+        <nav className={`${styleHeader["menuHeader"]} container`}>
           <hr />
           <ul>{renderListMenuTypeWork()}</ul>
           <hr />

@@ -13,7 +13,7 @@ import { history } from "../../../App";
 import { NavLink } from "react-router-dom";
 import { Carousel } from "antd";
 const contentStyle = {
-  height: "600px",
+  height: "100%",
   textAlign: "center",
   width: "100%",
 };
@@ -36,16 +36,18 @@ export default function CarouselHome(props) {
       return listWorkSearch.map((workSearch, index) => {
         return (
           <li
+            style={{ position: "relative" }}
             className="font-weight-bold"
-            style={{ lineHeight: "35px" }}
             key={index}
           >
+            <hr />
             <NavLink
               className="listWorkSearch"
               to={`/listworkdetail/${workSearch.congViec.tenCongViec}`}
             >
-              {workSearch.congViec.tenCongViec}
+              <p>{workSearch.congViec.tenCongViec}</p>
             </NavLink>
+            <hr />
           </li>
         );
       });
@@ -53,16 +55,18 @@ export default function CarouselHome(props) {
       return listWork?.map((work, index) => {
         return (
           <li
+            style={{ position: "relative" }}
             className="font-weight-bold"
-            style={{ lineHeight: "35px" }}
             key={index}
           >
+            <hr />
             <NavLink
               className="listWorkSearch"
               to={`/listworkdetail/${work.tenCongViec}`}
             >
-              {work.tenCongViec}
+              <p> {work.tenCongViec}</p>
             </NavLink>
+            <hr />
           </li>
         );
       });
@@ -72,14 +76,9 @@ export default function CarouselHome(props) {
   const handleChange = (event) => {
     let { name, value } = event.target;
     const newWorkName = value;
-    // dispatch({
-    //   type: WORK_NAME,
-    //   newWorkName: newWorkName,
-    // });
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef);
     }
-
     typingTimeoutRef.current = setTimeout(() => {
       dispatch({
         type: WORK_NAME,
@@ -87,11 +86,9 @@ export default function CarouselHome(props) {
       });
     }, 500);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
   const handleForcus = (e) => {
     let workBannerInput = document.getElementById("work_banner");
     workBannerInput.classList.toggle("workBanner");
@@ -100,7 +97,6 @@ export default function CarouselHome(props) {
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef);
     }
-
     typingTimeoutRef.current = setTimeout(() => {
       let workBannerInput = document.getElementById("work_banner");
       workBannerInput.classList.remove("workBanner");
@@ -109,9 +105,9 @@ export default function CarouselHome(props) {
 
   return (
     <Fragment>
-      <div style={{ position: "relative" }}>
-        <Carousel dots={false} autoplay effect="fade">
-          <div>
+      <div style={{ maxWidth: "1440px", position: "relative" }}>
+        <Carousel dots={false} effect="fade">
+          <div className="carousel-img">
             <img
               style={contentStyle}
               src="https://fiverr-res.cloudinary.com/image/upload/q_auto,f_auto/v1/attachments/generic_asset/asset/bb5958e41c91bb37f4afe2a318b71599-1599344049977/bg-hero-5-1792-x2.png"
@@ -149,7 +145,7 @@ export default function CarouselHome(props) {
         </Carousel>
         <div className="max-width-container">
           <div
-            className="reponsive_headerCarousel"
+            className="headerCarousel"
             style={{ padding: "48 0", position: "absolute" }}
           >
             <h3 className="text-light" style={{ fontSize: "45px" }}>
@@ -187,6 +183,8 @@ export default function CarouselHome(props) {
                 padding: "20px",
                 boxShadow: "20px 20px 50px 15px grey",
                 display: "none",
+                height: "300px",
+                overflowY: "auto",
               }}
             >
               {renderListWork()}
@@ -195,8 +193,8 @@ export default function CarouselHome(props) {
             <div className="d-flex mt-3">
               <span className="text-light">Popular: </span>
               <ul
-                className="p-0 listPopular"
-                style={{ listStyle: "none", display: "flex" }}
+                className="p-0 listCarousel-popular"
+                style={{ listStyle: "none", display: "flex", flexWrap: "wrap" }}
               >
                 <li className="mx-2">
                   <button className="btn btn-outline-light">
@@ -219,9 +217,12 @@ export default function CarouselHome(props) {
           </div>
         </div>
       </div>
-      <div style={{ backgroundColor: "#fafafa", marginBottom: "96px" }}>
+      <div
+        className="trusted"
+        style={{ backgroundColor: "#fafafa", marginBottom: "96px" }}
+      >
         <div className="container">
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="trusted-content d-flex justify-content-center align-items-center">
             <span
               className="font-weight-bold"
               style={{
@@ -233,6 +234,7 @@ export default function CarouselHome(props) {
               Trusted by:
             </span>
             <ul
+              className="trusted-list"
               style={{ listStyle: "none", display: "flex", flexWrap: "wrap" }}
             >
               <li>
