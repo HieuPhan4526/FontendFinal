@@ -12,6 +12,7 @@ import {
 import { WORK_NAME } from "../../redux/Types/WorkType";
 import { TOKEN, USER_LOGIN } from "../../utils/setting";
 import { SIGN_OUT } from "../../redux/Types/UserTypes";
+import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
 
 export default function Header(props) {
   let { tenCongViec } = props.match.params;
@@ -26,6 +27,16 @@ export default function Header(props) {
   useEffect(() => {
     dispatch(getWorkByNameAction(workNameValue));
   }, [workNameValue]);
+  const hanleShowHideLoadding = () => {
+    dispatch({
+      type: SHOW_LOADING,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
+  };
   const typingTimeoutRef = useRef(null);
   const renderListMenuTypeWork = () => {
     return listMenuTypeWork.map((menuWork, index) => {
@@ -271,7 +282,10 @@ export default function Header(props) {
               ></path>
             </svg>
           </li>
-          <i style={{ color: "white", fontSize: "30px", fontWeight: "600" }}>
+          <i
+            className="email-user"
+            style={{ color: "white", fontSize: "30px", fontWeight: "600" }}
+          >
             {user.email}
           </i>
           <li className={styleHeader["nav-item"]}>
@@ -332,6 +346,7 @@ export default function Header(props) {
                     dispatch({
                       type: SIGN_OUT,
                     });
+                    hanleShowHideLoadding();
                   }}
                   href="#"
                 >

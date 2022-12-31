@@ -52,8 +52,10 @@ export default function Home(props) {
     <div>
       <HomeHeader />
       <Carousel />
-      <div style={maxWith}>
-        <h1>Popular profesional services</h1>
+      <div className="Popular-profesional">
+        <h1 className="Popular-profesional-title">
+          Popular profesional services
+        </h1>
         <div className="my-5">
           <MultipleSlick />
         </div>
@@ -68,41 +70,44 @@ export default function Home(props) {
       >
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-12 col-xl-6" style={{ paddingRight: "11%" }}>
+            <div
+              className="aWholeWorld-contentleft col-md-12 col-xl-6"
+              style={{ paddingRight: "11%" }}
+            >
               <h2>A whole world of freelance talent at your fingertips</h2>
               <ul style={{ listStyle: "none" }}>
                 <li>
-                  <h4>
+                  <h4 className="aWholeWorld-contentleft">
                     <span className="mr-2" style={{ color: "#62646a" }}>
                       <i className="fa-regular fa-circle-check"></i>
                     </span>
                     The best for every budget
                   </h4>
-                  <p className="text-body">
+                  <p className="aWholeWorld-contentleft-text">
                     Find high-quality services at every price point. No hourly
                     rates, just project-based pricing.
                   </p>
                 </li>
                 <li>
-                  <h4>
+                  <h4 className="aWholeWorld-contentleft">
                     <span className="mr-2" style={{ color: "#62646a" }}>
                       <i className="fa-regular fa-circle-check"></i>
                     </span>
                     Protected payments, every time
                   </h4>
-                  <p className="text-body">
+                  <p className="aWholeWorld-contentleft-text">
                     Always know what you'll pay upfront. Your payment isn't
                     released until you approve the work.
                   </p>
                 </li>
                 <li>
-                  <h4>
+                  <h4 className="aWholeWorld-contentleft">
                     <span className="mr-2" style={{ color: "#62646a" }}>
                       <i className="fa-regular fa-circle-check"></i>
                     </span>
                     24/7 support
                   </h4>
-                  <p className="text-body">
+                  <p className="aWholeWorld-contentleft-text">
                     Questions? Our round-the-clock support team is available to
                     help anytime, anywhere.
                   </p>

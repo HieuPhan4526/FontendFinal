@@ -103,7 +103,7 @@ export default function SimpleSlick(props) {
                 </video>
               </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Kay Kim, Co-Founder
                 <span className="logo_simple">
@@ -164,7 +164,7 @@ export default function SimpleSlick(props) {
                 </video>
               </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Tim and Dan Joo, Co-Founders
                 <span className="logo_simple">
@@ -223,7 +223,7 @@ export default function SimpleSlick(props) {
                 </video>
               </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Brighid Gannon (DNP, PMHNP-BC), Co-Founder
                 <span className="logo_simple">
@@ -284,7 +284,7 @@ export default function SimpleSlick(props) {
                 </video>
               </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Caitlin Tormey, Chief Commercial Officer
                 <span className="logo_simple">

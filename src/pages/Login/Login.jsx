@@ -1,12 +1,17 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { history } from "../../App";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { SignInAction } from "../../redux/Actions/UserAction";
 import styleLogin from "../../assets/css/LoginRegister.module.css";
+import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
+import Loadding from "../../components/Loadding/Loadding";
 export default function Login() {
   let dispatch = useDispatch();
+  useEffect(() => {
+    hanleShowHideLoadding();
+  }, []);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -22,7 +27,16 @@ export default function Login() {
       dispatch(SignInAction(values));
     },
   });
-
+  const hanleShowHideLoadding = () => {
+    dispatch({
+      type: SHOW_LOADING,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
+  };
   return (
     <div>
       <section className={styleLogin["sign-in"]}>
@@ -80,6 +94,7 @@ export default function Login() {
           </div>
         </div>
       </section>
+      <Loadding />
     </div>
   );
 }

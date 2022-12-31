@@ -25,14 +25,13 @@
         padding: 10px 15px;
         background-color: beige;
     }
-    /* Header-home */
+    /* Header */
     #navbarSupportedContent{
         background-color: white;
         padding: 10px 20px;
     }
     #navbarSupportedContent ul {
         list-style: none;
-        display: block;
     }
     #navbarSupportedContent a{
         color: black;
@@ -62,7 +61,8 @@
         width: 100% !important;
     }
     .email-user{
-        color: black !important;
+        color: #FFD700 !important;
+        
     }
     /* Carousel */
     .headerCarousel{
@@ -86,7 +86,11 @@
 @media only screen and (max-width: 600px){
     /* Header-home */
     .email-user{
-        font-size: 15px !important;        
+        font-size: 20px !important;        
+    }
+    /* Popular-profesional */
+    .Popular-profesional-title{
+        font-size: 20px;
     }
     /* Carousel */
     .headerCarousel{
@@ -135,5 +139,37 @@
     .footer-content a{
         font-size: 10px;
     }
+    /* a-Whole-World */
+    .aWholeWorld-contentleft>h2{
+        font-size: 20px;
+    }
+    .aWholeWorld-contentleft h4{
+        font-size: 15px;
+    }
+    .aWholeWorld-contentleft-text{
+        font-size: 12px;
+    }
+    .text_italics{
+        font-size: 17px;
+    }
+    /* WorkDetail */ 
+    .the-sellerAvatar img{
+        width: 70px !important;
+        height: 70px !important;
+    }
+    .reviews-startCouters-content span{
+        font-size: 14px;
+    }
+    .reviews-startCouters-content ul{
+        text-align: center;
+    }
+    .reviews-startCouters-right h4{
+        font-size: 19px;
+    }
+    .reviews-startCouters-right li{
+        font-size: 15px;
+    }
+
+
 
 }

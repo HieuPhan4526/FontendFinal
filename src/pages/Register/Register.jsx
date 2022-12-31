@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { SignUpAction } from "../../redux/Actions/UserAction";
-import styleRegister from "../../assets/css/LoginRegister.module.css"
+import styleRegister from "../../assets/css/LoginRegister.module.css";
+import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
+import Loadding from "../../components/Loadding/Loadding";
 export default function Register() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    hanleShowHideLoadding();
+  }, []);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -29,16 +34,28 @@ export default function Register() {
       ),
     }),
     onSubmit: (values) => {
-      dispatch(SignUpAction(values))
+      dispatch(SignUpAction(values));
     },
   });
+  const hanleShowHideLoadding = () => {
+    dispatch({
+      type: SHOW_LOADING,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
+  };
   return (
     <div>
       <section className={styleRegister["signup"]}>
         <div className={styleRegister["container"]}>
           <div className={styleRegister["signup-content"]}>
             <div className={styleRegister["signup-form"]}>
-              <h2 className={styleRegister["form-title"]}>Đăng ký tài khoản :</h2>
+              <h2 className={styleRegister["form-title"]}>
+                Đăng ký tài khoản :
+              </h2>
               <form
                 method="POST"
                 className={styleRegister["register-form"]}
@@ -122,7 +139,7 @@ export default function Register() {
                     </div>
                   ) : null}
                 </div>
-                <div className={styleRegister["form-group", "form-button"]}>
+                <div className={styleRegister[("form-group", "form-button")]}>
                   <input
                     onChange={formik.handleChange}
                     type="submit"
@@ -138,6 +155,7 @@ export default function Register() {
           </div>
         </div>
       </section>
+      <Loadding />
     </div>
   );
 }
