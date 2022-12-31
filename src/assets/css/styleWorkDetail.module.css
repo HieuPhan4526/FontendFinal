@@ -81,6 +81,7 @@
     margin-top: 16px;
     font-size: 16px;
     font-weight: 600;
+    flex-wrap: wrap;
 }
 .togglers-wrapper{
     display: flex;
@@ -88,7 +89,7 @@
     list-style: none;
 }
 .top-filters-button{
-    margin: 0 6px 0 0;
+    margin: 5px;
     color: #222325;
     font-size: 16px;
     font-weight: 550;
@@ -121,9 +122,6 @@
 }
 /* Reviews */
 .reviews_right{
-    position: absolute;
-    top: 0;
-    right: 0;
     display: flex;
     align-items: baseline;
 }
@@ -186,8 +184,23 @@
     display: flex;
     justify-content: space-between;
 }
-
-
+.reviews-title{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+@media only screen and (max-width:600px) {
+    .title{
+        font-size: 15px;
+    }
+    .top-filters{
+        margin-bottom: 10px;
+    }
+    .gird-card{
+        grid-gap: 30px;
+    }
+}
 @media  only screen and (min-width: 600px) {
     .gird-card{
     grid-template-columns: repeat(2,1fr);

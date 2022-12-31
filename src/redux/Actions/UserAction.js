@@ -25,6 +25,7 @@ export const SignInAction = (values) => {
             history.goBack();
         } catch (error) {
             console.log(error);
+            alert(error.response.data.content);
         }
     };
 };

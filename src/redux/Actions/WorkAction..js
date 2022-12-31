@@ -63,8 +63,6 @@ export const hireAJobAction = (data) => {
     return async dispatch => {
         try {
             let result = await administrativeJob.hireAJobService(data);
-            console.log(result);
-            alert(result.data.message);
         } catch (error) {
             console.log(error);
         }

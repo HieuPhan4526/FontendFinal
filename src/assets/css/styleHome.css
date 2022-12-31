@@ -2,22 +2,19 @@
 .slick-next:before {
     color: black !important;
 }
-
-
+.slick-prev {
+    left: -35px !important;
+}
 .section{
     margin: 0 auto 48px;
     margin-bottom: 96px;
     padding: 32px 32px 64px;
-
 }
-
 .text-body{
     color: #62646a;
     font-size: 18px;
     line-height: 26px;
-    
 }
-
 .video{
     cursor: pointer;
     z-index: 1;
@@ -25,14 +22,77 @@
     width: 100%;
     height: 100%;
 }
+/* Header */
+
+#navbarSupportedContent1{
+    width: 100%;
+}
+
+/* Popular-profesional */
+.Popular-profesional{
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 32px 32px 64px
+}
+/* MultipleSlick */
+.multipleSlick-content{
+    position: relative;
+    width: 200px !important;
+    overflow: hidden;
+    cursor: pointer;
+}
+.multipleSlick-img{
+  width: 200px;
+  height: 300px;
+}
+.multipleSlick-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.multipleSlick-content:hover .multipleSlick-overlay{
+    opacity: 1;
+}
+.multipleSlick-overlay::before{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    display: block;
+    background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100% );
+    transform: skew(-25deg);
+    transition: all 0.75s;
+}
+.multipleSlick-overlay:hover::before{
+    left: 150%
+}
+.multipleSlick-text{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Explore */
+.multipleSlick{
+    text-align: center;
+}
 .Explore-list{
     list-style: none;
-    flex-wrap: wrap;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: auto auto auto;
 }
 .Explore-list li {
-    width: 50%;
     padding: 0 10px 32px;
     text-align: center;
+    border-radius: 5px;
 }
 .Explore-list li>a img{
     display: block;
@@ -46,25 +106,101 @@
     position: relative;
     display: inline-block
 }
-
-
-
-.iconPlay::after{
-    content: "";
-    display: inline-block;
-    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/desktop-play-button.c1196d6.png) no-repeat;
-    background-size: 80px;
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    z-index: 0;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-    cursor: pointer;
-    
+.Explore-img{
+    width: 100%;
+    opacity: 0.5;
+    position: relative;
 }
+
+.Explore-list li:hover{
+    position: relative;
+    animation: myMove 1s;
+    background-image: linear-gradient(to right,#f55f8d 0,#f8ae56 51%,#f55f8d 100%);
+    background-size: 200%;
+    box-shadow: 5px 10px 8px #888888;
+    color: white;
+}
+
+.overlay-Explore{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: all 0.5s;
+}
+/* freelance-talent */
+.freelance-talent-content{
+    position: relative;
+    cursor: pointer;
+}
+.freelance-talent-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.freelance-talent-icon{
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    opacity: 0.5;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.freelance-talent-content:hover .freelance-talent-icon{
+    opacity: 1;
+}
+/* ListWorkDetail */
+.card{
+    overflow: hidden;
+}
+.card:hover .card-text{
+    color: #1dbf73;
+}
+.listWorkSearch{
+    color: #74767e;
+}
+.overlay-listWork{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.card:hover .overlay-listWork{
+    opacity: 1;
+}
+.card:hover{
+    animation: myMove 1s;
+    box-shadow: 5px 10px 8px #888888;
+}
+.overlay-listWork::before{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: -70%;
+    display: block;
+    background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100% );
+    transform: skew(-25deg);
+    transition: all 0.75s;
+}
+.card:hover .overlay-listWork::before{
+    left: 115%
+}
+
+
 .textContentSimple{
     color: #74767e;
     display: flex;
@@ -90,32 +226,87 @@
 .workBannerHeader{
   display: block !important;
 }
-.listWorkSearch{
-    line-height: 35px;
-    color: #74767e;
-}
+
 .max-width-container{
     padding: 24px 24px 48px;
     width: 100%;
 }
+/*.aWholeWorld-contentleft */
+.aWholeWorld-contentleft h4,
+.aWholeWorld-contentleft i{
+    color: #FF0066;
+}
+.aWholeWorld-contentleft-text {
+    font-size: 17px;
 
+}
 
+/* workDetail */
+.workDetail-imgTop{
+    overflow: hidden;
+    position: relative;
+}
+.overlay-workDetail{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(225, 225, 225, 0.2);
+    opacity: 0;
+    top: 0;
+    transition: all 0.5s;
+}
+.workDetail-imgTop:hover .overlay-workDetail{
+    opacity: 1;
+}
+.overlay-workDetail::before{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: -65%;
+    display: block;
+    background: linear-gradient( to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100% );
+    transform: skew(-25deg);
+    transition: all 0.75s;
+}
+.workDetail-imgTop:hover .overlay-workDetail::before{
+    left: 120%;
+}
+/* Footer */
+.footerContact{
+    padding: 20px;
+    background-color:#FFFAFA ;
+    border-radius: 50px 50px 0 0;
 
+}
+.footerContact-leftContent{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.footer-content{
+    margin-top: 50px;
+}
+.footer-content ul{
+    list-style: none;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color:#FFFAFA ;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+
+}
 
 @media  only screen and (min-width: 600px) {
     .textContentSimple h5{
       font-size: 20px;
     }
-    .Explore-list li {
-        width: 33.33%;
-        padding-bottom: 55px;
-
-    }
     .reponsive_footer{
         display: block;
-    }
-    .reponsive_headerCarousel{
-        padding: 96px 64px;
     }
     .max-width-container{
     padding: 32px 32px 64px;
@@ -125,10 +316,6 @@
     bottom: 0;
     right: 0;
     z-index: 2;
-    }
-    .navbar-collapse ul li a{
-        color: black !important;
-        padding: 20px;
     }
 }
 @media  only screen and (min-width: 900px) {
@@ -142,9 +329,6 @@
         border-left: 1px solid #c5c6c9;
         height: 36px;
         margin-left: 16px;
-    }
-    .Explore-list li {
-        width: 20%;
     }
     .reponsive_headerCarousel{
         max-width: 560px;
@@ -173,9 +357,6 @@
         font-size: 30px;
         line-height: 44px;  
     }
-    .reponsive_headerCarousel{
-        max-width: 650px;
-    }
     .max-width-container{
         margin: 0 auto;
         max-width: 1400px;
@@ -183,3 +364,11 @@
     }
 }
 
+@keyframes myMove {
+    0%{
+      bottom: 0px;
+    }
+    100%{
+      bottom: 30px;
+    }
+  }

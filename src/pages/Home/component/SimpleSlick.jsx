@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { Modal } from "antd";
-
 export default function SimpleSlick(props) {
   const settings = {
     infinite: true,
@@ -15,7 +14,6 @@ export default function SimpleSlick(props) {
   const [isModalOpen4, setIsModalOpen4] = useState(false);
 
   //Open and Close modal1
-
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -62,50 +60,50 @@ export default function SimpleSlick(props) {
   };
 
   return (
-    <div className="container" style={{ padding: "100px 0" }}>
+    <div className="container" style={{ padding: "100px 50px" }}>
       <Slider {...settings}>
         <Fragment>
           <div className="row">
             <div className="col-md-12 col-xl-5">
-              <div style={{ position: "relative" }}>
-                <div className="iconPlay">
+              <div onClick={showModal} className="freelance-talent-content">
+                <img
+                  className="video"
+                  src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173399/testimonial-video-still-rooted.jpg"
+                  alt=""
+                />
+                <div className="freelance-talent-overlay">
                   <img
-                    onClick={() => {
-                      showModal();
-                    }}
-                    className="video"
-                    src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173399/testimonial-video-still-rooted.jpg"
+                    className="freelance-talent-icon"
+                    src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-play-icon-png-image_924817.jpg"
                     alt=""
                   />
-                  <Modal
-                    open={isModalOpen}
-                    footer={null}
-                    onOk={handleOk}
-                    onCancel={handleCancel}
-                    width={800}
-                    bodyStyle={{ padding: "0" }}
-                  >
-                    <div>
-                      <video
-                        id="video"
-                        style={{
-                          borderRadius: "0",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                        controls={true}
-                      >
-                        <source
-                          src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/yja2ld5fnolhsixj3xxw"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </Modal>
                 </div>
               </div>
+              <Modal
+                open={isModalOpen}
+                footer={null}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                width={800}
+                bodyStyle={{ padding: "0" }}
+              >
+                <video
+                  id="video"
+                  style={{
+                    borderRadius: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  controls={true}
+                >
+                  <source
+                    src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/yja2ld5fnolhsixj3xxw"
+                    type="video/mp4"
+                  />
+                </video>
+              </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Kay Kim, Co-Founder
                 <span className="logo_simple">
@@ -128,45 +126,45 @@ export default function SimpleSlick(props) {
         <Fragment>
           <div className="row">
             <div className="col-md-12 col-xl-5">
-              <div style={{ position: "relative" }}>
-                <div className="iconPlay">
+              <div onClick={showModal2} className="freelance-talent-content">
+                <img
+                  className="video"
+                  src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173395/testimonial-video-still-haerfest.jpg"
+                  alt=""
+                />
+                <div className="freelance-talent-overlay">
                   <img
-                    onClick={() => {
-                      showModal2();
-                    }}
-                    className="video"
-                    src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173395/testimonial-video-still-haerfest.jpg"
+                    className="freelance-talent-icon"
+                    src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-play-icon-png-image_924817.jpg"
                     alt=""
                   />
-                  <Modal
-                    open={isModalOpen2}
-                    footer={null}
-                    onOk={handleOk2}
-                    onCancel={handleCancel2}
-                    width={800}
-                    bodyStyle={{ padding: "0" }}
-                  >
-                    <div>
-                      <video
-                        id="video"
-                        style={{
-                          borderRadius: "0",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                        controls={true}
-                      >
-                        <source
-                          src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/bsncmkwya3nectkensun"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </Modal>
                 </div>
               </div>
+              <Modal
+                open={isModalOpen2}
+                footer={null}
+                onOk={handleOk2}
+                onCancel={handleCancel2}
+                width={800}
+                bodyStyle={{ padding: "0" }}
+              >
+                <video
+                  id="video"
+                  style={{
+                    borderRadius: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  controls={true}
+                >
+                  <source
+                    src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/bsncmkwya3nectkensun"
+                    type="video/mp4"
+                  />
+                </video>
+              </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Tim and Dan Joo, Co-Founders
                 <span className="logo_simple">
@@ -187,45 +185,45 @@ export default function SimpleSlick(props) {
         <Fragment>
           <div className="row">
             <div className="col-md-12 col-xl-5">
-              <div style={{ position: "relative" }}>
-                <div className="iconPlay">
+              <div onClick={showModal3} className="freelance-talent-content">
+                <img
+                  className="video"
+                  src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_2.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173396/testimonial-video-still-lavender.jpg"
+                  alt=""
+                />
+                <div className="freelance-talent-overlay">
                   <img
-                    onClick={() => {
-                      showModal3();
-                    }}
-                    className="video"
-                    src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_2.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173396/testimonial-video-still-lavender.jpg"
+                    className="freelance-talent-icon"
+                    src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-play-icon-png-image_924817.jpg"
                     alt=""
                   />
-                  <Modal
-                    open={isModalOpen3}
-                    footer={null}
-                    onOk={handleOk3}
-                    onCancel={handleCancel3}
-                    width={800}
-                    bodyStyle={{ padding: "0" }}
-                  >
-                    <div>
-                      <video
-                        id="video"
-                        style={{
-                          borderRadius: "0",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                        controls={true}
-                      >
-                        <source
-                          src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/rb8jtakrisiz0xtsffwi"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </Modal>
                 </div>
               </div>
+              <Modal
+                open={isModalOpen3}
+                footer={null}
+                onOk={handleOk3}
+                onCancel={handleCancel3}
+                width={800}
+                bodyStyle={{ padding: "0" }}
+              >
+                <video
+                  id="video"
+                  style={{
+                    borderRadius: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  controls={true}
+                >
+                  <source
+                    src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/rb8jtakrisiz0xtsffwi"
+                    type="video/mp4"
+                  />
+                </video>
+              </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Brighid Gannon (DNP, PMHNP-BC), Co-Founder
                 <span className="logo_simple">
@@ -247,45 +245,46 @@ export default function SimpleSlick(props) {
         <Fragment>
           <div className="row">
             <div className="col-md-12 col-xl-5">
-              <div style={{ position: "relative" }}>
-                <div className="iconPlay">
+              <div onClick={showModal4} className="freelance-talent-content">
+                <img
+                  className="video"
+                  src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_2.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173414/testimonial-video-still-naadam.jpg"
+                  alt=""
+                />
+                <div className="freelance-talent-overlay">
                   <img
-                    onClick={() => {
-                      showModal4();
-                    }}
-                    className="video"
-                    src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_2.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173414/testimonial-video-still-naadam.jpg"
+                    className="freelance-talent-icon"
+                    src="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-play-icon-png-image_924817.jpg"
                     alt=""
                   />
-                  <Modal
-                    open={isModalOpen4}
-                    footer={null}
-                    onOk={handleOk4}
-                    onCancel={handleCancel4}
-                    width={800}
-                    bodyStyle={{ padding: "0" }}
-                  >
-                    <div>
-                      <video
-                        id="video"
-                        style={{
-                          borderRadius: "0",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                        controls={true}
-                      >
-                        <source
-                          src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/plfa6gdjihpdvr10rchl"
-                          type="video/mp4"
-                        />
-                      </video>
-                    </div>
-                  </Modal>
                 </div>
               </div>
+
+              <Modal
+                open={isModalOpen4}
+                footer={null}
+                onOk={handleOk4}
+                onCancel={handleCancel4}
+                width={800}
+                bodyStyle={{ padding: "0" }}
+              >
+                <video
+                  id="video"
+                  style={{
+                    borderRadius: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  controls={true}
+                >
+                  <source
+                    src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/plfa6gdjihpdvr10rchl"
+                    type="video/mp4"
+                  />
+                </video>
+              </Modal>
             </div>
-            <div className="col-md-12 col-xl-7">
+            <div className="col-md-12 col-xl-7 mt-3">
               <h5 className="textContentSimple">
                 Caitlin Tormey, Chief Commercial Officer
                 <span className="logo_simple">

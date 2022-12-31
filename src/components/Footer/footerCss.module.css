@@ -1,0 +1,12 @@
+.footer-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.footer-icon a{
+    color: black;
+}
+.footer-icon a:hover{
+    color: blue;
+}

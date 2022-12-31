@@ -6,7 +6,6 @@ const stateDefault = {
     listWorkSearch: [],
     listMenuTypeWork: [],
     workDetail: [],
-
 };
 
 export const WorkReducer = (state = stateDefault, action) => {
@@ -29,6 +28,10 @@ export const WorkReducer = (state = stateDefault, action) => {
         }
         case SET_WORK_DETAIL: {
             state.workDetail = action.workDetail;
+            return { ...state };
+        }
+        case "SEARCH_WORKNAME": {
+            console.log(action);
             return { ...state };
         }
 

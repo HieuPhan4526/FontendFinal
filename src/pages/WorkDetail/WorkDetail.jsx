@@ -10,7 +10,6 @@ import { Rate } from "antd";
 import styleDetailWork from "../../assets/css/styleWorkDetail.module.css";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Menu, Space, Typography } from "antd";
-
 import {
   addCommentAction,
   getWorkOfCommentAction,
@@ -18,7 +17,9 @@ import {
 import { USER_LOGIN } from "../../utils/setting";
 import { history } from "../../App";
 import { useFormik } from "formik";
-
+import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
+import Loadding from "../../components/Loadding/Loadding";
+import swal from "sweetalert";
 const onChange = (key) => {
   console.log(key);
 };
@@ -60,8 +61,8 @@ export default function WorkDetail(props) {
   useEffect(() => {
     dispatch(getDetailWorkAction(maChiTietLoaiCongViec));
     dispatch(getWorkOfCommentAction(maChiTietLoaiCongViec));
+    showHideLoadding();
   }, []);
-
   const formik = useFormik({
     initialValues: {
       noiDung: "",
@@ -72,13 +73,27 @@ export default function WorkDetail(props) {
         alert("Vui lòng đăng nhập tài khoản!");
         history.push("/login");
       } else {
-        dispatch(addCommentAction(values));
+        if (values.noiDung.trim() !== "") {
+          dispatch(addCommentAction(values));
+          showHideLoadding();
+        } else {
+          alert("Hãy cho chúng tôi biết bình luận của bạn!");
+        }
       }
     },
   });
+  const showHideLoadding = () => {
+    dispatch({
+      type: SHOW_LOADING,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
+  };
   const renderWorkDetail = () => {
     return workDetail.map((work, index) => {
-      console.log(work);
       return (
         <Fragment key={index}>
           <div className="col-lg-12 col-xl-8">
@@ -151,17 +166,20 @@ export default function WorkDetail(props) {
                 </div>
               </div>
             </div>
-            <div className="my-4">
+
+            <div className="workDetail-imgTop my-4">
               <img
                 style={{
                   borderRadius: "5px",
-                  width: "80%",
+                  width: "100%",
                 }}
                 className="img-fluid"
                 src={work.congViec.hinhAnh}
                 alt=""
               />
+              <div className="overlay-workDetail"></div>
             </div>
+
             <div
               style={{
                 fontSize: "20px",
@@ -224,6 +242,7 @@ export default function WorkDetail(props) {
             <section className="the-seller">
               <h2>About the Seller</h2>
               <div
+                className="the-sellerAvatar"
                 style={{
                   display: "flex",
                 }}
@@ -312,7 +331,7 @@ export default function WorkDetail(props) {
               </div>
             </section>
             <section className="reviews mt-5 mb-4">
-              <h2 style={{ position: "relative" }}>
+              <h2 className={`${styleDetailWork["reviews-title"]}`}>
                 <div>
                   <span>355 Reviews</span>
                   <Rate className="mx-3" allowHalf defaultValue={5} />
@@ -347,42 +366,64 @@ export default function WorkDetail(props) {
                 className={`row reviews-startCouters ${styleDetailWork["reviews-startCouters"]}`}
               >
                 <div className="col-6 p-0">
-                  <div className={`${styleDetailWork["startCouters-content"]}`}>
+                  <div
+                    className={`reviews-startCouters-content ${styleDetailWork["startCouters-content"]}`}
+                  >
                     <button className=" btn btn-outline-primary">
-                      5 Starts
+                      <span>
+                        5 <i className="fa-solid fa-star" />
+                      </span>
                     </button>
                     <Rate allowHalf defaultValue={5} />
                     <span>(333)</span>
                   </div>
-                  <div className={`${styleDetailWork["startCouters-content"]}`}>
+                  <div
+                    className={`reviews-startCouters-content ${styleDetailWork["startCouters-content"]}`}
+                  >
                     <button className="btn btn-outline-primary">
-                      4 Starts
+                      <span>
+                        4 <i className="fa-solid fa-star" />
+                      </span>
                     </button>
                     <Rate allowHalf defaultValue={4} />
                     <span>(2)</span>
                   </div>
-                  <div className={`${styleDetailWork["startCouters-content"]}`}>
+                  <div
+                    className={`reviews-startCouters-content ${styleDetailWork["startCouters-content"]}`}
+                  >
                     <button className="btn btn-outline-primary">
-                      3 Starts
+                      <span>
+                        3 <i className="fa-solid fa-star" />
+                      </span>
                     </button>
                     <Rate allowHalf defaultValue={0} />
                     <span>(0)</span>
                   </div>
-                  <div className={`${styleDetailWork["startCouters-content"]}`}>
+                  <div
+                    className={`reviews-startCouters-content ${styleDetailWork["startCouters-content"]}`}
+                  >
                     <button className="btn btn-outline-primary">
-                      2 Starts
+                      <span>
+                        2 <i className="fa-solid fa-star" />
+                      </span>
                     </button>
                     <Rate allowHalf defaultValue={0} />
                     <span>(0)</span>
                   </div>
-                  <div className={`${styleDetailWork["startCouters-content"]}`}>
-                    <button className="btn btn-outline-primary">1 Start</button>
+                  <div
+                    className={`reviews-startCouters-content ${styleDetailWork["startCouters-content"]}`}
+                  >
+                    <button className="btn btn-outline-primary">
+                      <span>
+                        1 <i className="fa-solid fa-star" />
+                      </span>
+                    </button>
                     <Rate allowHalf defaultValue={0} />
                     <span>(0)</span>
                   </div>
                 </div>
                 <div className="col-6">
-                  <div>
+                  <div className="reviews-startCouters-right">
                     <h4>Rating Breakdown</h4>
                     <ul
                       className={`reviews-colRight ${styleDetailWork["reviews-colRight"]}`}
@@ -390,7 +431,7 @@ export default function WorkDetail(props) {
                       <li>
                         Seller communication level
                         <span>
-                          <div className="d-flex align-baseline">
+                          <div className="d-flex align-items-baseline">
                             <span
                               style={{
                                 width: 15,
@@ -427,7 +468,7 @@ export default function WorkDetail(props) {
                       <li>
                         Recommend to a friend
                         <span>
-                          <div className="d-flex align-baseline">
+                          <div className="d-flex align-items-baseline">
                             <span
                               style={{
                                 width: 15,
@@ -464,7 +505,7 @@ export default function WorkDetail(props) {
                       <li>
                         Service as described
                         <span>
-                          <div className="d-flex align-baseline">
+                          <div className="d-flex align-items-baseline">
                             <span
                               style={{
                                 width: 15,
@@ -831,7 +872,27 @@ export default function WorkDetail(props) {
                                   <hr />
                                   <button
                                     onClick={() => {
-                                      dispatch(hireAJobAction(renter));
+                                      swal({
+                                        title: "Are you sure?",
+                                        icon: "warning",
+                                        buttons: true,
+                                        dangerMode: true,
+                                      }).then((willDelete) => {
+                                        if (willDelete) {
+                                          dispatch(hireAJobAction(renter));
+                                          swal(
+                                            "Thanks you! you have successfully hired this job",
+                                            {
+                                              icon: "success",
+                                            }
+                                          );
+                                          showHideLoadding();
+                                        } else {
+                                          swal(
+                                            "Thanks you! I wish you a good day"
+                                          );
+                                        }
+                                      });
                                     }}
                                     style={{
                                       width: "100%",
@@ -910,7 +971,7 @@ export default function WorkDetail(props) {
                 />
               </div>
               <span className="ml-3">
-                <div className="d-flex align-baseline">
+                <div className="d-flex">
                   <h2 className="mr-3">{comment.tenNguoiBinhLuan}</h2>
                   <span
                     style={{
@@ -1053,6 +1114,7 @@ export default function WorkDetail(props) {
           </div>
         </div>
       </section>
+      <Loadding />
     </div>
   );
 }
