@@ -88,6 +88,8 @@ export default function CarouselHome(props) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    let { value } = event.target[0];
+    history.push(`/${value}`);
   };
   const handleForcus = (e) => {
     let workBannerInput = document.getElementById("work_banner");

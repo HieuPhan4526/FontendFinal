@@ -20,6 +20,7 @@ import { useFormik } from "formik";
 import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
 import Loadding from "../../components/Loadding/Loadding";
 import swal from "sweetalert";
+import { TenantInfor } from "../../_core/tenantInformation";
 const onChange = (key) => {
   console.log(key);
 };
@@ -41,9 +42,6 @@ const menu = (
 );
 
 export default function WorkDetail(props) {
-  const renter = {
-    hoanThanh: "true",
-  };
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, "0");
   let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -56,7 +54,8 @@ export default function WorkDetail(props) {
   let { listWorkOfComment } = useSelector(
     (rootReducer) => rootReducer.CommentReducer
   );
-  //   let { user } = useSelector((rootReducer) => rootReducer.UserReducer);
+  let { user } = useSelector((rootReducer) => rootReducer.UserReducer);
+  console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDetailWorkAction(maChiTietLoaiCongViec));
@@ -696,6 +695,7 @@ export default function WorkDetail(props) {
                                 `${styleDetailWork["navbar-responsive"]}`
                               );
                             } else {
+                              alert("Hãy đăng nhập tài khoản!");
                               history.push("/login");
                             }
                           }}
@@ -737,6 +737,7 @@ export default function WorkDetail(props) {
                             zIndex: "99",
                             transition: "all 0.5s",
                             transform: "translateX(100%)",
+                            overflowX: "auto",
                           }}
                           className={`navbar-responsive-right`}
                         >
@@ -879,7 +880,11 @@ export default function WorkDetail(props) {
                                         dangerMode: true,
                                       }).then((willDelete) => {
                                         if (willDelete) {
-                                          dispatch(hireAJobAction(renter));
+                                          const bookingJob = new TenantInfor();
+                                          bookingJob.maCongViec =
+                                            maChiTietLoaiCongViec;
+                                          bookingJob.ngayThue = today;
+                                          dispatch(hireAJobAction(bookingJob));
                                           swal(
                                             "Thanks you! you have successfully hired this job",
                                             {

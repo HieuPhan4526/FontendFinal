@@ -1,4 +1,4 @@
-import { SET_HIRE_JOB, SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, SET_WORK_DETAIL, TEN_CONG_VIEC, WORK_BY_NAME, WORK_NAME } from "../Types/WorkType";
+import { HIRED_WORK, SET_CATEGORIES_WORK, SET_HIRE_JOB, SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, SET_WORK_DETAIL, TEN_CONG_VIEC, WORK_BY_NAME, WORK_NAME } from "../Types/WorkType";
 
 const stateDefault = {
     listWork: [],
@@ -6,6 +6,7 @@ const stateDefault = {
     listWorkSearch: [],
     listMenuTypeWork: [],
     workDetail: [],
+    categories: [],
 };
 
 export const WorkReducer = (state = stateDefault, action) => {
@@ -31,10 +32,12 @@ export const WorkReducer = (state = stateDefault, action) => {
             return { ...state };
         }
         case "SEARCH_WORKNAME": {
-            console.log(action);
             return { ...state };
         }
-
+        case SET_CATEGORIES_WORK: {
+            state.categories = action.categories;
+            return { ...state };
+        }
         default: {
             return { ...state };
 

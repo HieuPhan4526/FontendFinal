@@ -82,6 +82,10 @@
     .Explore-list{
         grid-template-columns: auto auto;
     }
+    /* CategoriesDetail */
+    .cate-content{
+        grid-template-columns: auto auto;
+    }
 }
 @media only screen and (max-width: 600px){
     /* Header-home */
@@ -168,6 +172,10 @@
     }
     .reviews-startCouters-right li{
         font-size: 15px;
+    }
+    /* CategoriesDetail */
+    .cate-content{
+        grid-template-columns: auto ;
     }
 
 

@@ -6,9 +6,10 @@ import "../../assets/css/styleHome.css";
 import SimpleSlick from "./component/SimpleSlick";
 import { Button, Modal } from "antd";
 import HomeHeader from "./component/HomeHeader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
 import Loadding from "../../components/Loadding/Loadding";
+import { NavLink } from "react-router-dom";
 
 export default function Home(props) {
   const [isModalOpen1, setIsModalOpen1] = useState(false);
@@ -158,94 +159,94 @@ export default function Home(props) {
         <h2 className="mb-5 text-center">Explore the marketplace</h2>
         <ul className="Explore-list">
           <li>
-            <a href="/categories/graphics-design?source=hplo_cat_sec&pos=1">
+            <NavLink to="/categories/Graphics &amp; Design">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"
                 alt="Graphics & Design"
                 loading="lazy"
               />
               Graphics &amp; Design
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/online-marketing?source=hplo_cat_sec&pos=2">
+            <NavLink to="/categories/Digital Marketing">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/online-marketing.74e221b.svg"
                 alt="Digital Marketing"
                 loading="lazy"
               />
               Digital Marketing
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/writing-translation?source=hplo_cat_sec&pos=3">
+            <NavLink to="categories/Writing &amp; Translation">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/writing-translation.32ebe2e.svg"
                 alt="Writing & Translation"
                 loading="lazy"
               />
               Writing &amp; Translation
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/video-animation?source=hplo_cat_sec&pos=4">
+            <NavLink to="/categories/Video &amp; Animation">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/video-animation.f0d9d71.svg"
                 alt="Video & Animation"
                 loading="lazy"
               />
               Video &amp; Animation
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/music-audio?source=hplo_cat_sec&pos=5">
+            <NavLink to="/categories/Music &amp; Audio">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg"
                 alt="Music & Audio"
                 loading="lazy"
               />
               Music &amp; Audio
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/programming-tech?source=hplo_cat_sec&pos=6">
+            <NavLink to="/categories/Programming &amp; Tech">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/programming.9362366.svg"
                 alt="Programming & Tech"
                 loading="lazy"
               />
               Programming &amp; Tech
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/business?source=hplo_cat_sec&pos=7">
+            <NavLink to="/categories/Business">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/business.bbdf319.svg"
                 alt="Business"
                 loading="lazy"
               />
               Business
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/lifestyle?source=hplo_cat_sec&pos=8">
+            <NavLink to="/categories/Life Style">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg"
                 alt="Lifestyle"
                 loading="lazy"
               />
               Lifestyle
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="/categories/data?source=hplo_cat_sec&pos=9">
+            <NavLink to="/categories/Data">
               <img
                 src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/data.718910f.svg"
                 alt="Data"
                 loading="lazy"
               />
               Data
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

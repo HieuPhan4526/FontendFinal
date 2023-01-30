@@ -16,6 +16,7 @@ import UserDashboardTemplate from './templates/UserDashboardTemplate';
 import UserDashboard from './pages/UserDashboard/UserDashboard';
 import WorkDashboard from './pages/WorkDashboard/WorkDashboard';
 import TypeOfWorkDashboard from './pages/TypeOfWorkDashboard/TypeOfWorkDashboard';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 export const history = createBrowserHistory();
 
@@ -30,16 +31,23 @@ function App() {
 
           <WorkDetailTemplate exact path="/workdetail/:maChiTietLoaiCongViec" Component={WorkDetail} />
 
-          <HomeTemplate exact path="/" Component={Home} />
           <CategoriesTemplate exact path="/categories/:tenLoaiCongViec" Component={Categories} />
           <CategoriesTemplate exact path="/register" Component={Register} />
           <CategoriesTemplate exact path="/login" Component={Login} />
 
-          <CategoriesTemplate exact path="/profile" Component={Profile} />
-
+          <CategoriesTemplate exact path="/profile/:id" Component={Profile} />
           <UserDashboardTemplate exact path="/dashboard/users" Component={UserDashboard} />
           <UserDashboardTemplate exact path="/dashboard/works" Component={WorkDashboard} />
           <UserDashboardTemplate exact path="/dashboard/workstype" Component={TypeOfWorkDashboard} />
+
+
+
+
+          <HomeTemplate exact path="/" Component={Home} />
+
+
+
+          <WorkDetailTemplate path="*" Component={PageNotFound} />
         </Switch>
       </Router>
     </div>

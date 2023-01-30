@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BannerButton from "./component/BannerButton/BannerButton";
 import BannerSlider from "./component/BannerSlider/BannerSlider";
 import CategoriesDetail from "./component/CategoriesDetail/CategoriesDetail";
 import "./Categories.css";
+import { useDispatch, useSelector } from "react-redux";
+import { HIDE_LOADING, SHOW_LOADING } from "../../redux/Types/LoaddingType";
+import Loadding from "../../components/Loadding/Loadding";
+
 export default function Categories(props) {
-  console.log(props);
+  const dispatch = useDispatch();
+  const handleShowAndHideLoadding = () => {
+    dispatch({
+      type: SHOW_LOADING,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_LOADING,
+      });
+    }, 2000);
+  };
+  useEffect(() => {
+    handleShowAndHideLoadding();
+  }, [props.match.params.tenLoaiCongViec]);
+
   const CategoriesPages = [
     {
       id: 1,
@@ -70,6 +88,14 @@ export default function Categories(props) {
       banner:
         "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/9a9549b2f566b136fc15be5a34c49edd-1631623052332/Lifestyle.png",
     },
+    {
+      id: 9,
+      url: "/categories/Data",
+      name: "Data",
+      slogan: "Analyze and grow with data-powered insights.",
+      banner:
+        "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/f9d5a328494bd9d9b9cdc2db25278c64-1631623172022/Data.png",
+    },
   ];
   return CategoriesPages.map((page, index) => {
     if (page.url === props.match.url) {
@@ -132,6 +158,7 @@ export default function Categories(props) {
               Error Message
             </video>
           </div>
+          <Loadding />
         </div>
       );
     }

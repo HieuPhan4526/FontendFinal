@@ -1,7 +1,7 @@
 import { history } from "../../App";
 import { userService } from "../../services/UserService";
 import { TOKEN, USER_LOGIN } from "../../utils/setting";
-import { SIGN_IN } from "../Types/UserTypes";
+import { GET_INFO_USER, SIGN_IN } from "../Types/UserTypes";
 
 export const SignUpAction = (values) => {
     return (dispatch) => {
@@ -29,3 +29,4 @@ export const SignInAction = (values) => {
         }
     };
 };
+

@@ -159,6 +159,8 @@ export default function Header(props) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    let { value } = event.target[0];
+    history.push(`/${value}`);
   };
   const handleForcus = () => {
     let inputSearch = document.querySelector(".overlay");
@@ -308,9 +310,9 @@ export default function Header(props) {
                 className="dropdown-menu dropdown-menu-right"
                 style={{ position: "absolute" }}
               >
-                <a className="dropdown-item" href="/profile">
+                <NavLink className="dropdown-item" to={`/profile/${user.id}`}>
                   Profile
-                </a>
+                </NavLink>
                 <a className="dropdown-item" href="#">
                   Manage Request
                 </a>

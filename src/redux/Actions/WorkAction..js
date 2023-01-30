@@ -1,5 +1,6 @@
-import { administrativeJob } from "../../services/WorkService";
-import { SET_HIRE_JOB, SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, SET_WORK_DETAIL } from "../Types/WorkType";
+import { administrativeJob, workService } from "../../services/WorkService";
+import { TenantInfor } from "../../_core/tenantInformation";
+import { HIRED_WORK, SET_CATEGORIES_WORK, SET_HIRE_JOB, SET_LIST_WORK, SET_MENU_TYPE_WORK, SET_WORK_BY_NAME, SET_WORK_DETAIL } from "../Types/WorkType";
 
 export const getListWorkAction = () => {
     return async dispatch => {
@@ -59,13 +60,38 @@ export const getDetailWorkAction = (maCongViec) => {
 
     };
 };
-export const hireAJobAction = (data) => {
+export const hireAJobAction = (tenantInfor = new TenantInfor()) => {
     return async dispatch => {
         try {
-            let result = await administrativeJob.hireAJobService(data);
+            let result = await administrativeJob.hireAJobService(tenantInfor);
+            console.log(result);
         } catch (error) {
             console.log(error);
         }
+    };
+};
+export const getCategoriesWorkDetaileAction = (id) => {
+    return async dispatch => {
+        try {
+            let result = await workService.GetCategoriesWorkDetail(id);
+            console.log(result);
 
+            dispatch({
+                type: SET_CATEGORIES_WORK,
+                categories: result.data.content
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+export const getRentalListAction = () => {
+    return async dispatch => {
+        try {
+            let result = await administrativeJob.getRentalList();
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
     };
 };

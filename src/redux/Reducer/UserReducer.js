@@ -1,5 +1,6 @@
 import { TOKEN, USER_LOGIN } from "../../utils/setting";
-import { SIGN_IN, SIGN_OUT } from "../Types/UserTypes";
+import { GET_INFO_USER, SIGN_IN, SIGN_OUT } from "../Types/UserTypes";
+import { HIRED_WORK } from "../Types/WorkType";
 
 
 let userLogin = {};
@@ -7,7 +8,7 @@ if (localStorage.getItem(USER_LOGIN)) {
     userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
 }
 const initialState = {
-    user: userLogin
+    user: userLogin,
 };
 
 export const UserReducer = (state = initialState, action) => {
@@ -20,6 +21,7 @@ export const UserReducer = (state = initialState, action) => {
         case SIGN_OUT:
             state.user = "";
             return { ...state };
+
         default:
             return { ...state };
     }
